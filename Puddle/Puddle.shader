@@ -1,4 +1,4 @@
-﻿Shader "Custom/Mask Wave Shader"
+﻿Shader "Custom/Puddle"
 {
 	Properties
 	{
