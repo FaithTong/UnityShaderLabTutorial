@@ -1,4 +1,4 @@
-﻿ Shader "Custom/Struct"
+﻿ Shader "Custom/Return Struct"
 {
 	Properties
 	{
