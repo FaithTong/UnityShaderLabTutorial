@@ -58,10 +58,10 @@
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				float3 worldLightDir = UnityWorldSpaceLightDir(i.worldPos.xyz);
-				worldLightDir = normalize(worldLightDir);
+				float3 worldLight = UnityWorldSpaceLightDir(i.worldPos.xyz);
+				worldLight = normalize(worldLight);
 
-				fixed NdotL = saturate(dot(i.worldNromal, worldLightDir));
+				fixed NdotL = saturate(dot(i.worldNromal, worldLight));
 
 				fixed4 color = tex2D(_MainTex, i.texcoord);
 
@@ -119,10 +119,10 @@
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				float3 worldLightDir = UnityWorldSpaceLightDir(i.worldPos.xyz);
-				worldLightDir = normalize(worldLightDir);
+				float3 worldLight = UnityWorldSpaceLightDir(i.worldPos.xyz);
+				worldLight = normalize(worldLight);
 
-				fixed NdotL = saturate(dot(i.worldNromal, worldLightDir));
+				fixed NdotL = saturate(dot(i.worldNromal, worldLight));
 
 				fixed4 color = tex2D(_MainTex, i.texcoord);
 
