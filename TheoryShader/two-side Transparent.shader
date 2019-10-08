@@ -33,7 +33,7 @@
 			struct v2f
 			{
 				float4 pos : SV_POSITION;
-				float4 vertex : TEXCOORD0;
+				float4 worldPos : TEXCOORD0;
 				float2 texcoord : TEXCOORD1;
 				float3 worldNromal : TEXCOORD2;
 			};
@@ -47,7 +47,7 @@
 				v2f o;
 
 				o.pos = UnityObjectToClipPos(v.vertex);
-				o.vertex = v.vertex;
+				o.worldPos = mul(unity_ObjectToWorld, v.vertex);
 				o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 
 				float3 worldNromal = UnityObjectToWorldNormal(v.normal);
@@ -58,7 +58,7 @@
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				float3 worldLightDir = WorldSpaceLightDir(i.vertex);
+				float3 worldLightDir = UnityWorldSpaceLightDir(i.worldPos.xyz);
 				worldLightDir = normalize(worldLightDir);
 
 				fixed NdotL = saturate(dot(i.worldNromal, worldLightDir));
@@ -94,7 +94,7 @@
 			struct v2f
 			{
 				float4 pos : SV_POSITION;
-				float4 vertex : TEXCOORD0;
+				float4 worldPos : TEXCOORD0;
 				float2 texcoord : TEXCOORD1;
 				float3 worldNromal : TEXCOORD2;
 			};
@@ -108,7 +108,7 @@
 				v2f o;
 
 				o.pos = UnityObjectToClipPos(v.vertex);
-				o.vertex = v.vertex;
+				o.worldPos = mul(unity_ObjectToWorld, v.vertex);
 				o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 
 				float3 worldNromal = UnityObjectToWorldNormal(v.normal);
@@ -119,7 +119,7 @@
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				float3 worldLightDir = WorldSpaceLightDir(i.vertex);
+				float3 worldLightDir = UnityWorldSpaceLightDir(i.worldPos.xyz);
 				worldLightDir = normalize(worldLightDir);
 
 				fixed NdotL = saturate(dot(i.worldNromal, worldLightDir));
