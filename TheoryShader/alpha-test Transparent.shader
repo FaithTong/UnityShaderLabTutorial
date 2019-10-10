@@ -19,6 +19,7 @@
 			Tags{"LightMode" = "ForwardBase"}
 
 			Cull Off
+			AlphaToMask On
 
 			CGPROGRAM
 			#pragma vertex vert
