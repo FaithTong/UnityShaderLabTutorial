@@ -1,26 +1,22 @@
-﻿Shader "Custom/alpha-test Transparent"
+﻿Shader "Custom/Stencil-Test B"
 {
 	Properties
 	{
-		_MainTex ("MainTex", 2D) = "white" {}
-		_AlphaTest("Alpha Test", Range(0, 1)) = 0
+		_MainColor ("Main Color", Color) = (1, 1, 1, 1)
 	}
 	SubShader
 	{
-		Tags
-		{
-			"Queue" = "AlphaTest"
-			"RenderType" = "TrannsparentCutout"
-			"IgnoreProjector" = "True"
-		}
+		Tags {"Queue" = "Geometry"}
 
 		Pass
 		{
-			Tags{"LightMode" = "ForwardBase"}
-
-			Cull Off
-			AlphaToMask On
-
+			Stencil
+			{
+				Ref 1
+				Comp NotEqual
+				Pass Keep
+			}
+			
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -31,24 +27,20 @@
 			{
 				float4 pos : SV_POSITION;
 				float4 worldPos : TEXCOORD0;
-				float2 texcoord : TEXCOORD1;
-				float3 worldNormal : TEXCOORD2;
+				float3 worldNormal : TEXCOORD1;
 			};
 
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
-			fixed _AlphaTest;
+			fixed4 _MainColor;
 
 			v2f vert (appdata_base v)
 			{
 				v2f o;
 				o.pos = UnityObjectToClipPos(v.vertex);
 				o.worldPos = mul(unity_ObjectToWorld, v.vertex);
-				o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 
 				float3 worldNormal = UnityObjectToWorldNormal(v.normal);
 				o.worldNormal = normalize(worldNormal);
-
+				
 				return o;
 			}
 
@@ -58,16 +50,14 @@
 				worldLight = normalize(worldLight);
 
 				fixed NdotL = saturate(dot(i.worldNormal, worldLight));
-
-				fixed4 color = tex2D(_MainTex, i.texcoord);
-				clip(color.a - _AlphaTest);
-
-				color.rgb *= NdotL * _LightColor0;
-				color.rgb += unity_AmbientSky;
-
+				
+				fixed4 color = _MainColor * NdotL * _LightColor0;
+				color += unity_AmbientSky;
+				
 				return color;
 			}
 			ENDCG
 		}
 	}
+	// FallBack "Diffuse"
 }

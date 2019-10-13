@@ -28,7 +28,7 @@
 				o.pos = UnityObjectToClipPos(v.vertex);
 
 				float3 n = UnityObjectToWorldNormal(v.normal);
-				n= normalize(n);
+				n = normalize(n);
 				fixed3 l = normalize(_WorldSpaceLightPos0.xyz);
 				
 				fixed ndotl = dot(n, l);
