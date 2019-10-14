@@ -3,6 +3,7 @@
 	Properties
 	{
 		_MainColor ("Main Color", Color) = (1, 1, 1, 1)
+		_MainTex ("Main Tex", 2D) = "white" {}
 	}
 	SubShader
 	{
@@ -28,8 +29,11 @@
 				float4 pos : SV_POSITION;
 				float4 worldPos : TEXCOORD0;
 				float3 worldNormal : TEXCOORD1;
+				float2 texcoord : TEXCOORD2;
 			};
 
+			sampler2D _MainTex;
+			float4 _MainTex_ST;
 			fixed4 _MainColor;
 
 			v2f vert (appdata_base v)
@@ -40,6 +44,7 @@
 
 				float3 worldNormal = UnityObjectToWorldNormal(v.normal);
 				o.worldNormal = normalize(worldNormal);
+				o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 				
 				return o;
 			}
@@ -51,8 +56,9 @@
 
 				fixed NdotL = saturate(dot(i.worldNormal, worldLight));
 				
-				fixed4 color = _MainColor * NdotL * _LightColor0;
-				color += unity_AmbientSky;
+				fixed4 color = tex2D(_MainTex, i.texcoord);
+				color.rgb *= _MainColor * NdotL * _LightColor0.rgb;
+				color.rgb += unity_AmbientSky.rgb;
 				
 				return color;
 			}

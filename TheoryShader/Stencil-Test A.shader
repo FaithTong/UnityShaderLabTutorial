@@ -12,6 +12,8 @@
 				Comp Always
 				Pass Replace
 			}
+
+			ColorMask 0
 			ZWrite Off
 
 			CGPROGRAM
@@ -27,7 +29,7 @@
 
 			void frag (out fixed4 color : SV_Target)
 			{
-
+				color = fixed4(0, 0, 0, 0);
 			}
 			ENDCG
 		}
