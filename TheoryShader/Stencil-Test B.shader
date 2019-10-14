@@ -59,5 +59,4 @@
 			ENDCG
 		}
 	}
-	// FallBack "Diffuse"
 }
