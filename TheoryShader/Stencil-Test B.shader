@@ -11,6 +11,8 @@
 
 		Pass
 		{
+			Tags {"LightMode" = "ForwardBase"}
+
 			Stencil
 			{
 				Ref 1
