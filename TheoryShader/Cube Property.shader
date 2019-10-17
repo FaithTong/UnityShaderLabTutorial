@@ -18,11 +18,14 @@
 			samplerCUBE _Cubemap;
 
 			void vert (in float4 vertex : POSITION,
+						in float3 : NORMAL,
 						out float4 position : SV_POSITION,
 						out float4 worldPos : TEXCOORD0,
 						out float3 worldNormal : TEXCOORD1)
 			{
 				position = UnityObjectToClipPos(vertex);
+				worldPos = mul(unity_ObjectToWorld, vertex);
+				worldNroal = UnityObjectToWorldNormal()
 				
 			}
 
