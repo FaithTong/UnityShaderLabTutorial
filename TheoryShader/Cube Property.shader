@@ -51,8 +51,9 @@
 				float3 viewDir = worldPos.xyz - _WorldSpaceCameraPos;
 				viewDir = normalize(viewDir);
 
-				// 使用reflec函数计算反射向量
-				float3 refDir = reflect(viewDir.xyz, worldNormal);
+				// 计算反射向量
+				float3 refDir = 2 * dot(-viewDir, worldNormal)
+								* worldNormal + viewDir;
 				refDir = normalize(refDir);
 
 				fixed4 main = tex2D(_MainTex, texcoord) * _MainColor;
