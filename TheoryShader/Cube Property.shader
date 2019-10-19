@@ -47,21 +47,21 @@
 						in float2 texcoord : TEXCOORD2,
 						out fixed4 color : SV_Target)
 			{
+				fixed4 main = tex2D(_MainTex, texcoord) * _MainColor;
+
 				// 计算世界空间中从摄像机指向顶点的方向向量
 				float3 viewDir = worldPos.xyz - _WorldSpaceCameraPos;
 				viewDir = normalize(viewDir);
 
-				// 计算反射向量
+				// 套用公式计算反射向量
 				float3 refDir = 2 * dot(-viewDir, worldNormal)
 								* worldNormal + viewDir;
 				refDir = normalize(refDir);
 
-				fixed4 main = tex2D(_MainTex, texcoord) * _MainColor;
-
-				// 对Cubemap进行采样
+				// 对Cubemap采样
 				fixed4 reflection = texCUBE(_Cubemap, refDir);
 
-				// 对颜色和反射进行线性插值计算
+				// 使用_Reflection对颜色和反射进行线性插值计算
 				color = lerp(main, reflection, _Reflection);
 			}
 			ENDCG
