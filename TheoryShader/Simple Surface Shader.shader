@@ -24,7 +24,7 @@
 		fixed _Metallic;
 		fixed _Smoothness;
 
-		// 表面函数，使用金属性工作流表面属性结构体
+		// 表面函数，使用金属性工作流表面结构体
 		void surf (Input IN, inout SurfaceOutputStandard o)
 		{
 			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
