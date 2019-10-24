@@ -30,7 +30,7 @@
 			o.Albedo = c.rgb;
 
 			// 采样法线贴图并解包
-			fixed3 n = UnpackNormal(tex2D(_Normal, IN.uv_Normal)).rgb;
+			fixed3 n = UnpackNormal(tex2D(_Normal, IN.uv_Normal));
 			n *= float3(_Bumpiness, _Bumpiness, 1);
 			o.Normal = n;
 		}
