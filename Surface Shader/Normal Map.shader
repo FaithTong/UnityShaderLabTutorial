@@ -11,7 +11,6 @@
 	SubShader
 	{
 		CGPROGRAM
-
 		#pragma surface surf Lambert
 
 		struct Input
