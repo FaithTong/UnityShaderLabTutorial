@@ -18,6 +18,7 @@
 		sampler2D _MainTex;
 		fixed _Expansion;
 
+		// 顶点修改函数，输入/输出appdata_full结构体
 		void vert (inout appdata_full v)
 		{
 			v.vertex.xyz += v.normal * _Expansion;
