@@ -2,7 +2,7 @@
 
 **WHAT IS THIS?**
 
-This repository contain all shader files and textures that mentioned in my book.
+This repository contains all shader files and textures that mentioned in my book.
 
 **HOW TO USE?**
 
