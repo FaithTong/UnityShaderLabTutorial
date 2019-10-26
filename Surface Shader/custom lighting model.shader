@@ -9,6 +9,7 @@
 		CGPROGRAM
 		#pragma surface surf CustomLambert
 
+		// 灯光函数
 		half4 LightingCustomLambert (SurfaceOutput s, half3 lightDir, half atten)
 		{
 			fixed NdotL = saturate(dot(s.Normal, lightDir));

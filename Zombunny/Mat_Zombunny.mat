@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Zombunny
-  m_Shader: {fileID: 4800000, guid: 815cda8d75f82ba4d97486348234a00e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 66bdb249b39d89c40bf35b58ae7bc38f, type: 3}
   m_ShaderKeywords: _NORMALMAP _SPECGLOSSMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
