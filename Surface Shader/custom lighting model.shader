@@ -9,18 +9,6 @@
 		CGPROGRAM
 		#pragma surface surf CustomLambert
 
-		// 光照函数
-		half4 LightingCustomLambert (SurfaceOutput s, half3 lightDir, half atten)
-		{
-			fixed NdotL = saturate(dot(s.Normal, lightDir));
-
-			half4 c;
-			c.rgb = s.Albedo * _LightColor0 * NdotL * atten;
-			c.a = s.Alpha;
-
-			return c;
-		}
-
 		struct Input
 		{
 			float2 uv_MainTex;
@@ -31,6 +19,18 @@
 		void surf (Input IN, inout SurfaceOutput o)
 		{
 			o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb;
+		}
+
+		// 光照函数
+		half4 LightingCustomLambert (SurfaceOutput s, half3 lightDir, half atten)
+		{
+			fixed NdotL = saturate(dot(s.Normal, lightDir));
+
+			half4 c;
+			c.rgb = s.Albedo * _LightColor0 * NdotL * atten;
+			c.a = s.Alpha;
+
+			return c;
 		}
 		ENDCG
 	}
