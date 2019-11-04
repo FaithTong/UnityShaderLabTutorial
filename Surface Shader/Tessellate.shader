@@ -9,7 +9,7 @@
 		_Height ("Height", Range(0, 1.0)) = 0
 
 		_NormalMap ("Normal Map", 2D) = "bump" {}
-		_Bumpiness ("Bumpiness", Range(0, 2)) = 1
+		_Bumpiness ("Bumpiness", Range(0, 1)) = 0.5
 	}
 	SubShader
 	{
@@ -26,26 +26,27 @@
 			return _Tessellation;
 		}
 
-		// float4 _MainTex_ST;
 		sampler2D _HeightMap;
+		float4 _HeightMap_ST;
 		fixed _Height;
 
-		struct Input
-		{
-			float2 uv_MainTex;
-		};
-
 		// 顶点修改函数
-		void height (Input IN, inout appdata_full v)
+		void height (inout appdata_full v)
 		{
-			// float2 texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
+			float2 texcoord = TRANSFORM_TEX(v.texcoord, _HeightMap);
+
 			// 对_HeightMap采样，然后乘以_Height
-			float h = tex2Dlod(_HeightMap, float4(IN.uv_MainTex, 0, 0)).r * _Height;
+			float h = tex2Dlod(_HeightMap, float4(texcoord, 0, 0)).r * _Height;
 
 			// 顶点延着法线方向偏移h
 			v.vertex.xyz += v.normal * h;
 		}
 
+		struct Input
+		{
+			float2 uv_MainTex;
+			float2 uv_NormalMap;
+		};
 
 		sampler2D _MainTex;
 		sampler2D _NormalMap;
@@ -56,7 +57,7 @@
 			half4 c = tex2D(_MainTex, IN.uv_MainTex);
 			o.Albedo = c.rgb;
 
-			float3 n = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
+			float3 n = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));
 			n.xy *= fixed2(_Bumpiness, _Bumpiness);
 			o.Normal = n;
 		}
