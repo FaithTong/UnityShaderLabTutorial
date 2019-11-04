@@ -16,7 +16,7 @@
 		CGPROGRAM
 
 		// 声明曲面细分函数和顶点修改函数的编译指令
-		#pragma surface surf Lambert addshadow tessellate:tessellation vertex:height
+		#pragma surface surf Lambert tessellate:tessellation vertex:height addshadow
 
 		half _Tessellation;
 
