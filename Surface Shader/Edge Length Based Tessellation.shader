@@ -16,23 +16,29 @@
 		Tags { "RenderType"="Opaque" }
 		LOD 300
 		CGPROGRAM
-            #pragma surface surf BlinnPhong addshadow fullforwardshadows vertex:disp tessellate:tessEdge nolightmap
-            #pragma target 4.6
-            #include "Tessellation.cginc"
 
-            struct appdata {
+		// 声明曲面细分函数和顶点修改函数的编译指令
+		#pragma surface surf Lambert tessellate:tessellateEdge vertex:height addshadow nolightmap fullforwardshadows
+		#include "Tessellation.cginc"
+		// #pragma target 4.6
+
+		struct appdata {
                 float4 vertex : POSITION;
                 float4 tangent : TANGENT;
                 float3 normal : NORMAL;
                 float2 texcoord : TEXCOORD0;
             };
+		half _EdgeLength;
 
-            float _EdgeLength;
+		// 曲面细分函数
+		float4 tessellateEdge (appdata v0, appdata v1, appdata v2)
+		{
+			return UnityEdgeLengthBasedTess (v0.vertex. v1.vertex, v2.vertex, _EdgeLength);
+		}
 
-            float4 tessEdge (appdata v0, appdata v1, appdata v2)
-            {
-                return UnityEdgeLengthBasedTess (v0.vertex, v1.vertex, v2.vertex, _EdgeLength);
-            }
+		sampler2D _HeightMap;
+		float4 _HeightMap_ST;
+		fixed _Height;
 
 		// 顶点修改函数
 		void height (inout appdata v)
