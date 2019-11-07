@@ -1,5 +1,5 @@
-﻿ Shader "Surface/Edge Length Based Tessellation"
- {
+﻿Shader "Surface/Edge Length Based Tessellation"
+{
 	Properties
 	{
 		_MainTex ("Color", 2D) = "white" {}
@@ -24,7 +24,7 @@
 		// 曲面细分函数
 		float4 tessellateEdge (appdata_full v0, appdata_full v1, appdata_full v2)
 		{
-			return UnityEdgeLengthBasedTess (v0.vertex, v1.vertex, v2.vertex, _EdgeLength);
+			return UnityEdgeLengthBasedTess(v0.vertex, v1.vertex, v2.vertex, _EdgeLength);
 		}
 
 		sampler2D _HeightMap;
@@ -42,7 +42,7 @@
 			// 顶点延着法线方向偏移h
 			v.vertex.xyz += v.normal * h;
 		}
-		
+
 		struct Input
 		{
 			float2 uv_MainTex;
