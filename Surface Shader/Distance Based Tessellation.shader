@@ -1,4 +1,4 @@
-﻿Shader "Surface/Edge Length Based Tessellation"
+﻿Shader "Surface/Distance Based Tessellation"
 {
 	Properties
 	{
