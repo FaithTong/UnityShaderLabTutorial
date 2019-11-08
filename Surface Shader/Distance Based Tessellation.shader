@@ -4,9 +4,12 @@
 	{
 		_MainTex ("Color", 2D) = "white" {}
 
-		_EdgeLength ("Edge Length", Range(1, 32)) = 1
 		_HeightMap ("Height Map", 2D) = "gray" {}
 		_Height ("Height", Range(0, 1.0)) = 0
+
+		_MinDistance ("Min Distance", Range(0, 50)) = 10
+		_MaxDistance ("Max Distance", Range(0, 50)) = 25
+		_Tessellation ("Tessellation", Range(1, 32)) = 1
 
 		_NormalMap ("Normal Map", 2D) = "bump" {}
 		_Bumpiness ("Bumpiness", Range(0, 1)) = 0.5
@@ -16,16 +19,19 @@
 		CGPROGRAM
 
 		// 声明曲面细分函数和顶点修改函数的编译指令
-		#pragma surface surf Lambert tessellate:tessellateEdge vertex:height addshadow
+		#pragma surface surf Lambert tessellate:tessellateDistance vertex:height addshadow
 		#include "Tessellation.cginc"
 
-		half _EdgeLength;
+		half _MinDistance;
+		half _MaxDistance;
+		half _Tessellation;
 
 		// 曲面细分函数
-		float4 tessellateEdge (appdata_full v0, appdata_full v1, appdata_full v2)
+		float4 tessellateDistance (appdata_full v0, appdata_full v1, appdata_full v2)
 		{
-			// 调用基于边长的曲面细分函数
-			return UnityEdgeLengthBasedTess(v0.vertex, v1.vertex, v2.vertex, _EdgeLength);
+			// 调用基于距离的曲面细分函数
+			return UnityDistanceBasedTess(v0.vertex, v1.vertex, v2.vertex,
+										_MinDistance, _MaxDistance, _Tessellation);
 		}
 
 		sampler2D _HeightMap;
