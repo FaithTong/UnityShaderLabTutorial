@@ -8,6 +8,7 @@
 	{
 		Tags {"Queue" = "Transparent"}
 
+		// 调用GrabPass，并定义抓取图像的名称
 		GrabPass{"_MainTex"}
 
 		Pass
@@ -24,20 +25,25 @@
 			};
 
 
-			v2f vert (appdata_base v)
+			v2f vert (float4 vertex : POSITION)
 			{
 				v2f o;
-				o.pos = UnityObjectToClipPos(v.vertex);
+				o.pos = UnityObjectToClipPos(vertex);
+
+				//计算抓取图像在屏幕上的位置
 				o.grabPos = ComputeGrabScreenPos(o.pos);
 
 				return o;
 			}
 
 			fixed _GrayScale;
+
+			// 声明抓取图像
 			sampler2D _MainTex;
 
 			half4 frag (v2f i) : SV_TARGET
 			{
+				// 采样抓取图像
 				half4 source = tex2Dproj(_MainTex, i.grabPos);
 
 				half grayscale = Luminance(source.rgb);
