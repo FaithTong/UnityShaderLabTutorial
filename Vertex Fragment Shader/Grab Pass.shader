@@ -44,12 +44,12 @@
 			half4 frag (v2f i) : SV_TARGET
 			{
 				// 采样抓取图像
-				half4 source = tex2Dproj(_MainTex, i.grabPos);
+				half4 src = tex2Dproj(_MainTex, i.grabPos);
 
-				half grayscale = Luminance(source.rgb);
-				half4 destination = half4(grayscale, grayscale, grayscale, 1);
+				half grayscale = Luminance(src.rgb);
+				half4 dst = half4(grayscale, grayscale, grayscale, 1);
 
-				return lerp(source, destination, _GrayScale);
+				return lerp(src, dst, _GrayScale);
 			}
 			ENDCG
 		}
