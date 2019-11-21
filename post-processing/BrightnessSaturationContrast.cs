@@ -17,16 +17,8 @@ public class BrightnessSaturationContrast : MonoBehaviour
     //后期处理的材质
     private Material EffectMaterial;
 
-    private void Start()
-    {
-        if (null == EffectShader || !EffectShader.isSupported)
-        {
-            enabled = false;
-            return;
-        }
-    }
     //基于Shader生成的Material
-    Material currentMaterial
+    Material CurrentMaterial
     {
         get
         {
@@ -52,9 +44,9 @@ public class BrightnessSaturationContrast : MonoBehaviour
         if (EffectShader)
         {
             //将脚本中的属性传递给Shader
-            EffectMaterial.SetFloat("_Brightness", Brightness);
-            EffectMaterial.SetFloat("_Saturation", Saturation);
-            EffectMaterial.SetFloat("_Contrast", Contrast);
+            CurrentMaterial.SetFloat("_Brightness", Brightness);
+            CurrentMaterial.SetFloat("_Saturation", Saturation);
+            CurrentMaterial.SetFloat("_Contrast", Contrast);
 
             Graphics.Blit(source, destination, EffectMaterial);
         }
