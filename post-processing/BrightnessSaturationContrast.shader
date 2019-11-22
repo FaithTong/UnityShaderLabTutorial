@@ -1,4 +1,4 @@
-﻿Shader "PostEffectShader/BrightnessSaturationContrast"
+﻿Shader "post-processing/BrightnessSaturationContrast"
 {
 	Properties 
 	{
@@ -10,40 +10,41 @@
 
 	Subshader 
 	{
-		Tags{"RenderType" = "Opaque"}
-		LOD 200
-
 		Pass
 		{
-			CGPROGRAM
-			#pragma vertex vert_img
-			#pragma fragment frag
-			#pragma fragmentoption ARB_precision_hint_fastest
-			#include "UnityCG.cginc"
-			#pragma target 3.0
+			Cull Off
+			ZTest Always
+			ZWrite Off
 
-			sampler2D _MainTex;
+			CGPROGRAM
+			#pragma vertex vert_img // 包含文件内置的顶点着色器
+			#pragma fragment frag
+			#include "UnityCG.cginc"
+
+			sampler2D _MainTex; // RenderTexture
 			half _Brightness;
 			half _Saturation;
 			half _Contrast;
 
-			fixed4 frag(v2f_img i) : SV_Target
+			half4 frag(v2f_img i) : SV_Target
 			{
-				fixed4 renderTex = tex2D(_MainTex, i.uv);
+				half4 renderTex = tex2D(_MainTex, i.uv);
 
-				fixed3 finalColor = renderTex.rgb * _Brightness;
-			
-				fixed luminance = dot(finalColor, fixed3(0.2125, 0.7154, 0.0721));
-				fixed3 luminanceColor = fixed3(luminance, luminance, luminance);
+				// 亮度
+				half3 finalColor = renderTex.rgb * _Brightness;
+				
+				// 饱和度
+				half luminance = Luminance(finalColor);
+				half luminanceColor = half3(luminance, luminance, luminance);
 				finalColor = lerp(luminanceColor, finalColor, _Saturation);
 
-				fixed3 grayColor = fixed3(0.5, 0.5, 0.5);
+				// 对比度
+				half3 grayColor = half3(0.5, 0.5, 0.5);
 				finalColor = lerp(grayColor, finalColor, _Contrast);
 
-				return fixed4(finalColor, renderTex.a);
+				return half4(finalColor, 1);
 			}
 			ENDCG
 		}
 	}
-	Fallback off
 }
