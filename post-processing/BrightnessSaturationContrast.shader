@@ -17,17 +17,19 @@
 			ZWrite Off
 
 			CGPROGRAM
-			#pragma vertex vert_img // 包含文件内置的顶点着色器
+			#pragma vertex vert_img // 使用包含文件内置的顶点着色器
 			#pragma fragment frag
 			#include "UnityCG.cginc"
 
-			sampler2D _MainTex; // RenderTexture
+			sampler2D _MainTex; // 声明RenderTexture
 			half _Brightness;
 			half _Saturation;
 			half _Contrast;
 
+			// 将vert_img的输出结构体v2f_img输入到片段着色器
 			half4 frag(v2f_img i) : SV_Target
 			{
+				// 使用v2f_img结构体内的纹理坐标对RenderTexture采样
 				half4 renderTex = tex2D(_MainTex, i.uv);
 
 				// 亮度
