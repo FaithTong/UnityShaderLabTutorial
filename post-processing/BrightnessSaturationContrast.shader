@@ -37,8 +37,7 @@
 				
 				// 饱和度
 				half luminance = Luminance(finalColor);
-				half luminanceColor = half3(luminance, luminance, luminance);
-				finalColor = lerp(luminanceColor, finalColor, _Saturation);
+				finalColor = lerp(luminance, finalColor, _Saturation);
 
 				// 对比度
 				half3 grayColor = half3(0.5, 0.5, 0.5);
