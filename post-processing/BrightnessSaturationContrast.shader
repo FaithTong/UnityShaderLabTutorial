@@ -1,4 +1,4 @@
-﻿Shader "post-processing/BrightnessSaturationContrast"
+﻿Shader "Hidden/BrightnessSaturationContrast"
 {
 	Properties 
 	{
