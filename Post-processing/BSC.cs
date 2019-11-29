@@ -3,9 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 [Serializable]
-
-//在下拉列表中显示的路径
-[PostProcess(typeof(GrayscaleRenderer), PostProcessEvent.AfterStack, "Custom/BSC")]
+[PostProcess(typeof(BSCRenderer), PostProcessEvent.AfterStack, "Custom/BSC")]
 public sealed class BSC : PostProcessEffectSettings
 {
     //开放属性
@@ -19,13 +17,14 @@ public sealed class BSC : PostProcessEffectSettings
     public FloatParameter Contrast = new FloatParameter { value = 1f };
 }
 
-public sealed class GrayscaleRenderer : PostProcessEffectRenderer<BSC>
+public sealed class BSCRenderer : PostProcessEffectRenderer<BSC>
 {
     public override void Render(PostProcessRenderContext context)
     {
+        // 查找Shader文件
         var sheet = context.propertySheets.Get(Shader.Find("Hidden/BSC-HLSL"));
 
-        //传递属性
+        //传递属性到Shader
         sheet.properties.SetFloat("_Brightness", settings.Brightness);
         sheet.properties.SetFloat("_Saturation", settings.Saturation);
         sheet.properties.SetFloat("_Contrast", settings.Contrast);
