@@ -1,5 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4029289150708878784
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: BSC
+  m_EditorClassIdentifier: Assembly-CSharp::BSC
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  Brightness:
+    overrideState: 0
+    value: 1
+  Saturation:
+    overrideState: 0
+    value: 1
+  Contrast:
+    overrideState: 0
+    value: 1
 --- !u!114 &-3305828658160748563
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -32,26 +57,7 @@ MonoBehaviour:
   m_Name: Post-processing Profile
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: 6741740133096306906}
---- !u!114 &6741740133096306906
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: BSC
-  m_EditorClassIdentifier: Assembly-CSharp::BSC
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  blend:
-    overrideState: 1
-    value: 0.447
+  - {fileID: -4029289150708878784}
 --- !u!114 &9045778633249337541
 MonoBehaviour:
   m_ObjectHideFlags: 3
