@@ -50,8 +50,8 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   blend:
-    overrideState: 0
-    value: 0.5
+    overrideState: 1
+    value: 0.447
 --- !u!114 &9045778633249337541
 MonoBehaviour:
   m_ObjectHideFlags: 3
