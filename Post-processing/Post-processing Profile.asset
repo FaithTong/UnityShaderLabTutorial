@@ -37,8 +37,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
   m_Name: Post-processing Profile
   m_EditorClassIdentifier: 
-  settings:
-  - {fileID: 2519921063219573040}
+  settings: []
 --- !u!114 &2519921063219573040
 MonoBehaviour:
   m_ObjectHideFlags: 3
