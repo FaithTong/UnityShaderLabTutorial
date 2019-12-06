@@ -42,13 +42,13 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   Brightness:
-    overrideState: 0
+    overrideState: 1
     value: 1
   Saturation:
-    overrideState: 0
+    overrideState: 1
     value: 1
   Contrast:
-    overrideState: 0
+    overrideState: 1
     value: 1
 --- !u!114 &11400000
 MonoBehaviour:
