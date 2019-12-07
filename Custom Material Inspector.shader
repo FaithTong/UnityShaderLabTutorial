@@ -5,7 +5,7 @@
 		// 在材质面板插入一行标题
 		[Header(Custom Material Inspector)]
 
-		// 在材质面板插入一行空行
+		// 在材质面板插入一行空白行，可以写在单独一行
 		[Space]
 
 		_MainTex ("Main Tex", 2D) = "white" {}
@@ -13,7 +13,7 @@
 		// 在材质面板上隐藏Tiling和Offset
 		[NoScaleOffset]_SecondTex ("Second Tex", 2D) = "white" {}
 
-		// 在材质面板插入30行空行
+		// 在材质面板插入30行空白行，可以写在单独一行
 		[Space(30)]
 
 		// 开关
