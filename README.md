@@ -1,4 +1,4 @@
-# UnUnity ShaderLab Tutorial
+# Unity ShaderLab Tutorial
 
 **WHAT IS THIS?**
 
