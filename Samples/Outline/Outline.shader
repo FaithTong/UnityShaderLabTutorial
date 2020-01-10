@@ -17,7 +17,7 @@
 
     SubShader
     {
-        Tags { "RenderType"="Opaque" "Queue" = "Geometry+1"}
+        Tags { "RenderType"="Opaque" "Queue" = "Transparent-1"}
 
         //---------- Outline Layer ----------
         Pass
