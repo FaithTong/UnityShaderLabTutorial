@@ -15,9 +15,10 @@
         [NoScaleOffset]_Normal ("Nromal", 2D) = "bump"{}
         [NoScaleOffset]_AO ("AO", 2D) = "white"{}
     }
+
     SubShader
     {
-        Tags{"Queue" = "Transparent"}
+        Tags{"RenderType = Opaque" "Queue" = "Transparent"}
 
         //---------- The Blocked Part ----------
         Pass
