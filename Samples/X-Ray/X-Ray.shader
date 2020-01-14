@@ -4,16 +4,16 @@
     {
         [Header(The Blocked Part)]
         [Space(10)]
-        _Color("Occlusion Color", Color) = (0,1,1,1)
-        _Width("Occlusion Width", Range(0, 10)) = 1
-        _Intensity("Occlusion Intensity",Range(0, 10)) = 1
+        _Color ("X-Ray Color", Color) = (0,1,1,1)
+        _Width ("X-Ray Width", Range(1, 2)) = 1
+        _Brightness ("X-Ray Brightness",Range(0, 2)) = 1
 
         [Header(The Normal Part)]
         [Space(10)]
         _Albedo("Albedo", 2D) = "white"{}
-        [NoScaleOffset]_Specular("Specular (RGB-A)", 2D) = "black"{}
-        [NoScaleOffset]_Normal("Nromal", 2D) = "bump"{}
-        [NoScaleOffset]_AO("AO", 2D) = "white"{}
+        [NoScaleOffset]_Specular ("Specular (RGB-A)", 2D) = "black"{}
+        [NoScaleOffset]_Normal ("Nromal", 2D) = "bump"{}
+        [NoScaleOffset]_AO ("AO", 2D) = "white"{}
     }
     SubShader
     {
@@ -34,19 +34,19 @@
 
             struct v2f
             {
-                float4 worldPos : SV_POSITION;
+                float4 vertexPos : SV_POSITION;
                 float3 viewDir : TEXCOORD0;
                 float3 worldNor : TEXCOORD1;
             };
 
             fixed4 _Color;
             fixed _Width;
-            half _Intensity;
+            half _Brightness;
 
             v2f vert(appdata_base v)
             {
                 v2f o;
-                o.worldPos = UnityObjectToClipPos(v.vertex);
+                o.vertexPos = UnityObjectToClipPos(v.vertex);
                 o.viewDir = normalize(WorldSpaceViewDir(v.vertex));
                 o.worldNor = UnityObjectToWorldNormal(v.normal);
 
@@ -55,8 +55,9 @@
 
             float4 frag(v2f i) : SV_Target
             {
+                // Fresnel算法
                 half NDotV = saturate( dot(i.worldNor, i.viewDir));
-                NDotV = pow(1 - NDotV, _Width) * _Intensity;
+                NDotV = pow(1 - NDotV, _Width) * _Brightness;
 
                 fixed4 color;
                 color.rgb = _Color.rgb;
