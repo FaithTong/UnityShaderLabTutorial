@@ -18,7 +18,7 @@
 
     SubShader
     {
-        Tags{"RenderType" = "Opaque" "Queue" = "Transparent"}
+        Tags{"RenderType" = "Opaque" "Queue" = "Geometry"}
 
         //---------- The Blocked Part ----------
         Pass
