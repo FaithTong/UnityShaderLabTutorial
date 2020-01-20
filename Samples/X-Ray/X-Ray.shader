@@ -40,10 +40,6 @@
                 float3 worldNor : TEXCOORD1;
             };
 
-            fixed4 _Color;
-            fixed _Width;
-            half _Brightness;
-
             v2f vert(appdata_base v)
             {
                 v2f o;
@@ -53,6 +49,10 @@
 
                 return o;
             }
+
+            fixed4 _Color;
+            fixed _Width;
+            half _Brightness;
 
             float4 frag(v2f i) : SV_Target
             {
