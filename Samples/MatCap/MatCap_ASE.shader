@@ -1,6 +1,6 @@
 // Made with Amplify Shader Editor
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "Samples/MatCap-ASE"
+Shader "Samples/MatCap_ASE"
 {
 	Properties
 	{
@@ -106,15 +106,15 @@ Shader "Samples/MatCap-ASE"
 }
 /*ASEBEGIN
 Version=17700
-0;0;1920;1029;1213.397;498.4022;1;True;False
-Node;AmplifyShaderEditor.NormalVertexDataNode;26;-780.493,-88.72229;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TransformDirectionNode;36;-608.8304,-93.63367;Inherit;False;Object;View;False;Fast;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.ScaleAndOffsetNode;33;-375.5063,-88.40723;Inherit;True;3;0;FLOAT3;0,0,0;False;1;FLOAT;0.5;False;2;FLOAT;0.5;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.SamplerNode;32;-122.6983,-89.34938;Inherit;True;Property;_MatCap;MatCap;0;1;[NoScaleOffset];Create;True;0;0;False;0;-1;None;8ba3ba9fc41925d49be49cd27d4923b7;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;23;193,-85;Float;False;True;-1;2;ASEMaterialInspector;100;1;Samples/MatCap-ASE;0770190933193b94aaa3065e307002fa;True;Unlit;0;0;Unlit;2;True;0;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;True;0;False;-1;0;False;-1;True;False;True;0;False;-1;True;True;True;True;True;0;False;-1;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;RenderType=Opaque=RenderType;True;2;0;False;False;False;False;False;False;False;False;False;True;1;LightMode=ForwardBase;False;0;;0;0;Standard;1;Vertex Position,InvertActionOnDeselection;1;0;1;True;False;;0
+0;0;1920;1029;1388.662;579.9183;1;True;False
+Node;AmplifyShaderEditor.NormalVertexDataNode;26;-821,-80;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TransformDirectionNode;36;-641,-85;Inherit;False;Object;View;False;Fast;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.ScaleAndOffsetNode;33;-416,-80;Inherit;True;3;0;FLOAT3;0,0,0;False;1;FLOAT;0.5;False;2;FLOAT;0.5;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.SamplerNode;32;-167,-79;Inherit;True;Property;_MatCap;MatCap;0;1;[NoScaleOffset];Create;True;0;0;False;0;-1;None;8ba3ba9fc41925d49be49cd27d4923b7;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;23;131,-74;Float;False;True;-1;2;ASEMaterialInspector;100;1;Samples/MatCap_ASE;0770190933193b94aaa3065e307002fa;True;Unlit;0;0;Unlit;2;True;0;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;True;0;False;-1;0;False;-1;True;False;True;0;False;-1;True;True;True;True;True;0;False;-1;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;RenderType=Opaque=RenderType;True;2;0;False;False;False;False;False;False;False;False;False;True;1;LightMode=ForwardBase;False;0;;0;0;Standard;1;Vertex Position,InvertActionOnDeselection;1;0;1;True;False;;0
 WireConnection;36;0;26;0
 WireConnection;33;0;36;0
 WireConnection;32;1;33;0
 WireConnection;23;0;32;0
 ASEEND*/
-//CHKSM=E33C1B69637E6AD85DB8C351BFE9E4B41B0CED13
+//CHKSM=6C733CDEF6867C883F58327E032B8D66B27F452C
