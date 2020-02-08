@@ -27,7 +27,11 @@
             v2f vert (appdata_base v)
             {
                 v2f o;
+
+                // 使用UNITY_MATRIX_MV的逆转置矩阵
+                // 变换非统一缩放物体的法线向量
                 o.normal = mul(UNITY_MATRIX_IT_MV, float4(v.normal, 1));
+
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
                 return o;
