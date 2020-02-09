@@ -30,7 +30,7 @@
 
                 // 使用UNITY_MATRIX_MV的逆转置矩阵
                 // 变换非统一缩放物体的法线向量
-                o.texcoord = mul(UNITY_MATRIX_IT_MV, float4(v.normal, 1)).xy;
+                o.texcoord = mul(UNITY_MATRIX_IT_MV, float4(v.normal, 0)).xy;
 
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
