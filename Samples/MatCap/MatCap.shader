@@ -18,7 +18,7 @@
 
             struct v2f
             {
-                float2 normal : TEXCOORD0;
+                float2 texcoord : TEXCOORD0;
                 float4 vertex : SV_POSITION;
             };
 
@@ -30,7 +30,7 @@
 
                 // 使用UNITY_MATRIX_MV的逆转置矩阵
                 // 变换非统一缩放物体的法线向量
-                o.normal = mul(UNITY_MATRIX_IT_MV, float4(v.normal, 1)).xy;
+                o.texcoord = mul(UNITY_MATRIX_IT_MV, float4(v.normal, 1)).xy;
 
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
@@ -39,9 +39,8 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float2 texcoord = i.normal * 0.5 + 0.5;
-                fixed4 col = tex2D(_MatCap, texcoord);
-                return col;
+                float2 texcoord = i.texcoord * 0.5 + 0.5;
+                return tex2D(_MatCap, texcoord);
             }
             ENDCG
         }
