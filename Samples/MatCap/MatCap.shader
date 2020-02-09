@@ -39,7 +39,9 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
+                // 范围 [-1, 1] => [0, 1]
                 float2 texcoord = i.texcoord * 0.5 + 0.5;
+
                 return tex2D(_MatCap, texcoord);
             }
             ENDCG
