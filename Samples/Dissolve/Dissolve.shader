@@ -16,8 +16,7 @@
     {
         Tags
         { 
-            "RenderType"="Opaque"
-            "Queue" = "AlphaTest"
+            "RenderType"="TransparentCutout" "Queue" = "AlphaTest"
         }
 
         CGPROGRAM
