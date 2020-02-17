@@ -2,15 +2,22 @@
 {
     Properties
     {
-        _NoiseTex("Noise", 2D) = "white"{}
-        _RampTex("Ramp", 2D) = "black"{}
-        _Dissolve("Dissolve", Range(0, 1)) = 0
-        _Emission("Emission", float) = 1
+        // -------------------- PBR Textures --------------------
+        [Header(PBR Textures)]
+        [Space(10)]
+        [NoScaleOffset]_Albedo("Albedo", 2D) = "white"{}
+        [NoScaleOffset]_Specular("Specular_Smoothness", 2D) = "black"{}
+        [NoScaleOffset]_Normal("Normal", 2D) = "bump"{}
+        [NoScaleOffset]_AO("AO", 2D) = "white"{}
 
-        _MainTex("Albedo", 2D) = "white"{}
-        _Specular("Specular", 2D) = "black"{}
-        _Normal("Normal", 2D) = "bump"{}
-        _AO("AO", 2D) = "white"{}
+        // -------------------- Dissolve Properties --------------------
+        [Header(Dissolve Properties)]
+        [Space(10)]
+        _Noise ("Dissolve Noise", 2D) = "white" {}
+        _Dissolve ("Dissolve", Range(0, 1)) = 0
+        [NoScaleOffset]_Gradient ("Edge Gradient", 2D) = "black" {}
+        _Range ("Edge Range", Range(2, 100)) = 6
+        _Brightness ("Brightness", Range(0, 10)) = 1
     }
     SubShader
     {
@@ -24,40 +31,43 @@
 
         struct Input
         {
-            float2 uv_MainTex;
-            float2 uv_NoiseTex;
+            float2 uv_Albedo;
+            float2 uv_Noise;
         };
 
-        sampler2D _NoiseTex;
-        sampler2D _RampTex;
-        fixed _Dissolve;
-        float _Emission;
-
-        sampler2D _MainTex;
+        sampler2D _Albedo;
         sampler2D _Specular;
         sampler2D _Normal;
         sampler2D _AO;
 
+        sampler2D _Noise;
+        fixed _Dissolve;
+        sampler2D _Gradient;
+        float _Range;
+        float _Brightness;
+
         void surf (Input IN, inout SurfaceOutputStandardSpecular o)
         {
-            fixed Noise = tex2D(_NoiseTex, IN.uv_NoiseTex).r;
+            // Clip Mask
+            fixed noise = tex2D(_Noise, IN.uv_Noise).r;
             fixed dissolve = _Dissolve * 2 - 1;
-            clip(Noise - dissolve - 0.5);
+            fixed mask = saturate(noise - dissolve);
+            clip(mask - 0.5);
 
-            fixed border = 1 - saturate(saturate(((Noise - dissolve)) * 8 - 4));
-            o.Emission = tex2D(_RampTex, fixed2(border, 0.5)) * _Emission;
+            // Burn Effect
+            fixed texcoord = saturate(mask * _Range - 0.5 * _Range);
+            o.Emission = tex2D(_Gradient, fixed2(texcoord, 0.5)) * _Brightness;
 
-            fixed4 c = tex2D (_MainTex, IN.uv_MainTex);
+            fixed4 c = tex2D (_Albedo, IN.uv_Albedo);
             o.Albedo = c.rgb;
 
-            fixed4 specular = tex2D(_Specular, IN.uv_MainTex);
-
+            fixed4 specular = tex2D(_Specular, IN.uv_Albedo);
             o.Specular = specular.rgb;
             o.Smoothness = specular.a;
 
-            o.Normal = UnpackNormal(tex2D(_Normal, IN.uv_MainTex));
+            o.Normal = UnpackNormal(tex2D(_Normal, IN.uv_Albedo));
 
-            o.Occlusion = tex2D(_AO, IN.uv_MainTex);
+            o.Occlusion = tex2D(_AO, IN.uv_Albedo);
         }
         ENDCG
     }
