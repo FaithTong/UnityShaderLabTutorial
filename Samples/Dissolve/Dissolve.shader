@@ -2,8 +2,8 @@
 {
     Properties
     {
-        // -------------------- PBR Textures --------------------
-        [Header(PBR Textures)]
+        // -------------------- PBS Textures --------------------
+        [Header(PBS Textures)]
         [Space(10)]
         [NoScaleOffset]_Albedo("Albedo", 2D) = "white"{}
         [NoScaleOffset]_Specular("Specular_Smoothness", 2D) = "black"{}
