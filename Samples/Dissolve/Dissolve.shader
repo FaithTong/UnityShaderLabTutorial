@@ -5,19 +5,19 @@
         // -------------------- PBS Textures --------------------
         [Header(PBS Textures)]
         [Space(10)]
-        [NoScaleOffset]_Albedo("Albedo", 2D) = "white"{}
-        [NoScaleOffset]_Specular("Specular_Smoothness", 2D) = "black"{}
-        [NoScaleOffset]_Normal("Normal", 2D) = "bump"{}
-        [NoScaleOffset]_AO("AO", 2D) = "white"{}
+        [NoScaleOffset]_Albedo("Albedo", 2D) = "white" {}
+        [NoScaleOffset]_Specular("Specular_Smoothness", 2D) = "black" {}
+        [NoScaleOffset]_Normal("Normal", 2D) = "bump" {}
+        [NoScaleOffset]_AO("AO", 2D) = "white" {}
 
         // -------------------- Dissolve Properties --------------------
         [Header(Dissolve Properties)]
         [Space(10)]
-        _Noise ("Dissolve Noise", 2D) = "white" {}
-        _Dissolve ("Dissolve", Range(0, 1)) = 0
-        [NoScaleOffset]_Gradient ("Edge Gradient", 2D) = "black" {}
-        _Range ("Edge Range", Range(2, 100)) = 6
-        _Brightness ("Brightness", Range(0, 10)) = 1
+        _Noise("Dissolve Noise", 2D) = "white" {}
+        _Dissolve("Dissolve", Range(0, 1)) = 0
+        [NoScaleOffset]_Gradient("Edge Gradient", 2D) = "black" {}
+        _Range("Edge Range", Range(2, 100)) = 6
+        _Brightness("Brightness", Range(0, 10)) = 1
     }
     SubShader
     {
