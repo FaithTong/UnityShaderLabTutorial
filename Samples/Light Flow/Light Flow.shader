@@ -13,7 +13,7 @@
     {
         Tags {"Type" = "Transparent" "Queue" = "Transparent"}
 
-        Blend One One
+        Blend OneMinusDstColor One
 
         Pass
         {
