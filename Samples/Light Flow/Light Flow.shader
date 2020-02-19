@@ -4,6 +4,8 @@
     {
         _Tex("Texture", 2D) = "white" {}
         _Color("Color", Color) = (0, 1, 1, 1)
+
+        // 关键词枚举，0为x方向，1为y方向
         [KeywordEnum(X,Y)]_DIRECTION("Flow Direction", float) = 0
         _Speed("Flow Speed", float) = 1
     }
@@ -18,7 +20,10 @@
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+
+            // 定义枚举关键词
             #pragma multi_compile _DIRECTION_X _DIRECTION_Y
+
             #include "unityCG.cginc"
 
             struct v2f
@@ -46,14 +51,14 @@
             {
                 float2 texcoord;
                 
+                // 判断流动方向
                 #if _DIRECTION_X
                 texcoord = float2(i.texcoord.x + _Time.x * _Speed, i.texcoord.y);
                 #elif _DIRECTION_Y
                 texcoord = float2(i.texcoord.x, i.texcoord.y + _Time.x * _Speed);
                 #endif
 
-                float4 c = tex2D(_Tex, texcoord) * _Color;
-                return c;
+                return tex2D(_Tex, texcoord) * _Color;
             }
             ENDCG
         }
