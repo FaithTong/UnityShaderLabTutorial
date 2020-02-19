@@ -25,7 +25,7 @@
             {
                 float2 texcoord : TEXCOORD0;
                 float4 vertex : SV_POSITION;
-			};
+            };
 
             sampler2D _Tex;
             float4 _Tex_ST;
@@ -40,7 +40,7 @@
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
                 return o;
-			}
+            }
 
             float4 frag (v2f i) : SV_Target
             {
@@ -54,8 +54,8 @@
 
                 float4 c = tex2D(_Tex, texcoord) * _Color;
                 return c;
-			}
+            }
             ENDCG
-		}
-	}
+        }
+    }
 }
