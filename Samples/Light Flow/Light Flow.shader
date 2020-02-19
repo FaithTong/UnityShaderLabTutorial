@@ -1,74 +1,61 @@
-﻿Shader "Samples/Dissolve"
+﻿Shader "Samples/LightFlow"
 {
     Properties
     {
-        // -------------------- PBS Textures --------------------
-        [Header(PBS Textures)]
-        [Space(10)]
-        [NoScaleOffset]_Albedo("Albedo", 2D) = "white" {}
-        [NoScaleOffset]_Specular("Specular_Smoothness", 2D) = "black" {}
-        [NoScaleOffset]_Normal("Normal", 2D) = "bump" {}
-        [NoScaleOffset]_AO("AO", 2D) = "white" {}
-
-        // -------------------- Dissolve Properties --------------------
-        [Header(Dissolve Properties)]
-        [Space(10)]
-        _Noise("Dissolve Noise", 2D) = "white" {}
-        _Dissolve("Dissolve", Range(0, 1)) = 0
-        [NoScaleOffset]_Gradient("Edge Gradient", 2D) = "black" {}
-        _Range("Edge Range", Range(2, 100)) = 6
-        _Brightness("Brightness", Range(0, 10)) = 1
+        _Tex("Texture", 2D) = "white" {}
+        _Color("Color", Color) = (0, 1, 1, 1)
+        [KeywordEnum(X,Y)]_DIRECTION("Flow Direction", float) = 0
+        _Speed("Flow Speed", float) = 1
     }
     SubShader
     {
-        Tags
-        { 
-            "RenderType"="TransparentCutout" "Queue" = "AlphaTest"
-        }
+        Tags {"Type" = "Transparent" "Queue" = "Transparent"}
 
-        CGPROGRAM
-        #pragma surface surf StandardSpecular  addshadow fullforwardshadows
+        Blend One One
 
-        struct Input
+        Pass
         {
-            float2 uv_Albedo;
-            float2 uv_Noise;
-        };
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #pragma multi_compile _DIRECTION_X _DIRECTION_Y
+            #include "unityCG.cginc"
 
-        sampler2D _Albedo;
-        sampler2D _Specular;
-        sampler2D _Normal;
-        sampler2D _AO;
+            struct v2f
+            {
+                float2 texcoord : TEXCOORD0;
+                float4 vertex : SV_POSITION;
+			};
 
-        sampler2D _Noise;
-        fixed _Dissolve;
-        sampler2D _Gradient;
-        float _Range;
-        float _Brightness;
+            sampler2D _Tex;
+            float4 _Tex_ST;
+            fixed4 _Color;
+            float _Speed;
 
-        void surf (Input IN, inout SurfaceOutputStandardSpecular o)
-        {
-            // Clip Mask
-            fixed noise = tex2D(_Noise, IN.uv_Noise).r;
-            fixed dissolve = _Dissolve * 2 - 1;
-            fixed mask = saturate(noise - dissolve);
-            clip(mask - 0.5);
+            v2f vert (appdata_base v)
+            {
+                v2f o;
 
-            // Burn Effect
-            fixed texcoord = saturate(mask * _Range - 0.5 * _Range);
-            o.Emission = tex2D(_Gradient, fixed2(texcoord, 0.5)) * _Brightness;
+                o.texcoord = TRANSFORM_TEX(v.texcoord, _Tex);
+                o.vertex = UnityObjectToClipPos(v.vertex);
 
-            fixed4 c = tex2D (_Albedo, IN.uv_Albedo);
-            o.Albedo = c.rgb;
+                return o;
+			}
 
-            fixed4 specular = tex2D(_Specular, IN.uv_Albedo);
-            o.Specular = specular.rgb;
-            o.Smoothness = specular.a;
+            float4 frag (v2f i) : SV_Target
+            {
+                float2 texcoord;
+                
+                #if _DIRECTION_X
+                texcoord = float2(i.texcoord.x + _Time.x * _Speed, i.texcoord.y);
+                #elif _DIRECTION_Y
+                texcoord = float2(i.texcoord.x, i.texcoord.y + _Time.x * _Speed);
+                #endif
 
-            o.Normal = UnpackNormal(tex2D(_Normal, IN.uv_Albedo));
-
-            o.Occlusion = tex2D(_AO, IN.uv_Albedo);
-        }
-        ENDCG
-    }
+                float4 c = tex2D(_Tex, texcoord) * _Color;
+                return c;
+			}
+            ENDCG
+		}
+	}
 }
