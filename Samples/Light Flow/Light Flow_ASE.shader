@@ -33,7 +33,7 @@ Shader "Samples/Light Flow_ASE"
 		Pass
 		{
 			Name "Unlit"
-			Tags { "LightMode"="ForwardBase" }
+			
 			CGPROGRAM
 
 			
@@ -127,7 +127,7 @@ Shader "Samples/Light Flow_ASE"
 }
 /*ASEBEGIN
 Version=17700
-0;0;1920;1029;1538.638;369.1474;1;False;False
+0;0;1920;1029;1708.638;355.1474;1;True;False
 Node;AmplifyShaderEditor.TimeNode;3;-1335.919,105.1851;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;21;-1305.919,262.1856;Inherit;False;Property;_FlowSpeed;Flow Speed;2;0;Create;True;0;0;False;0;1;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;5;-1166.264,-40.697;Inherit;False;0;1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -141,7 +141,7 @@ Node;AmplifyShaderEditor.StaticSwitch;32;-585.5717,44.27689;Inherit;False;Proper
 Node;AmplifyShaderEditor.ColorNode;18;-274,170.5;Inherit;False;Property;_Color;Color;1;0;Create;True;0;0;False;0;0,1,1,0;0.3254717,0.9012592,1,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SamplerNode;1;-364,-24.5;Inherit;True;Property;_Tex;Tex;0;0;Create;True;0;0;False;0;-1;None;61c0b9c0523734e0e91bc6043c72a490;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;17;-33,-20.5;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;109,-21;Float;False;True;-1;2;ASEMaterialInspector;100;1;Samples/Light Flow_ASE;0770190933193b94aaa3065e307002fa;True;Unlit;0;0;Unlit;2;True;5;4;False;-1;1;False;-1;0;1;False;-1;0;False;-1;True;0;False;-1;0;False;-1;True;False;True;2;False;-1;True;True;True;True;True;0;False;-1;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;2;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;2;0;False;False;False;False;False;False;False;False;False;True;1;LightMode=ForwardBase;False;0;;0;0;Standard;1;Vertex Position,InvertActionOnDeselection;1;0;1;True;False;;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;109,-21;Float;False;True;-1;2;ASEMaterialInspector;100;1;Samples/Light Flow_ASE;0770190933193b94aaa3065e307002fa;True;Unlit;0;0;Unlit;2;True;5;4;False;-1;1;False;-1;0;1;False;-1;0;False;-1;True;0;False;-1;0;False;-1;True;False;True;2;False;-1;True;True;True;True;True;0;False;-1;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;2;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;2;0;False;False;False;False;False;False;False;False;False;True;0;False;0;;0;0;Standard;1;Vertex Position,InvertActionOnDeselection;1;0;1;True;False;;0
 WireConnection;19;0;3;1
 WireConnection;19;1;21;0
 WireConnection;8;0;5;1
@@ -160,4 +160,4 @@ WireConnection;17;0;1;0
 WireConnection;17;1;18;0
 WireConnection;0;0;17;0
 ASEEND*/
-//CHKSM=5E05B3DDDF56B248021A9EC315563B68A67DBAFC
+//CHKSM=353AE73EA4D8BDFC219F3EE188FB581C5B077FED

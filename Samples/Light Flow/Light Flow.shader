@@ -14,6 +14,7 @@
         Tags {"Type" = "Transparent" "Queue" = "Transparent"}
 
         Blend OneMinusDstColor One
+        Cull Off
 
         Pass
         {
