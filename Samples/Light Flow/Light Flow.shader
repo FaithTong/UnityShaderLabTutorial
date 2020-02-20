@@ -1,4 +1,4 @@
-﻿Shader "Samples/LightFlow"
+﻿Shader "Samples/Light Flow"
 {
     Properties
     {
@@ -22,7 +22,7 @@
             #pragma fragment frag
 
             // 定义枚举关键词
-            #pragma multi_compile _DIRECTION_X _DIRECTION_Y
+            #pragma shader_feature _DIRECTION_X _DIRECTION_Y
 
             #include "unityCG.cginc"
 
