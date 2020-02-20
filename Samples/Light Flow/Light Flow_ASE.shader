@@ -127,7 +127,7 @@ Shader "Samples/Light Flow_ASE"
 }
 /*ASEBEGIN
 Version=17700
-0;0;1920;1029;2028.743;589.6147;1.3;True;False
+0;0;1920;1029;1538.638;369.1474;1;False;False
 Node;AmplifyShaderEditor.TimeNode;3;-1335.919,105.1851;Inherit;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;21;-1305.919,262.1856;Inherit;False;Property;_FlowSpeed;Flow Speed;2;0;Create;True;0;0;False;0;1;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;5;-1166.264,-40.697;Inherit;False;0;1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -160,4 +160,4 @@ WireConnection;17;0;1;0
 WireConnection;17;1;18;0
 WireConnection;0;0;17;0
 ASEEND*/
-//CHKSM=E4B858D7F38309D87672A4F9FC2850893A712F63
+//CHKSM=5E05B3DDDF56B248021A9EC315563B68A67DBAFC
