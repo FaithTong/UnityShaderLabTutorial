@@ -6,7 +6,7 @@
         _Color("Color", Color) = (0, 1, 1, 1)
 
         // 关键词枚举，0为x方向，1为y方向
-        [KeywordEnum(X,Y)]_DIRECTION("Flow Direction", float) = 0
+        [KeywordEnum(X,Y)] _DIRECTION("Flow Direction", float) = 0
         _Speed("Flow Speed", float) = 1
     }
     SubShader
