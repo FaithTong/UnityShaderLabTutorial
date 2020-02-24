@@ -11,9 +11,9 @@
     }
     SubShader
     {
-        Tags {"Type" = "Transparent" "Queue" = "Transparent"}
+        Tags {"RenderType" = "Transparent" "Queue" = "Transparent"}
 
-        Blend OneMinusDstColor One
+        Blend One One
         Cull Off
 
         Pass
