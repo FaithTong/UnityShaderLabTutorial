@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dynamic Liquid_mat
+  m_Shader: {fileID: 4800000, guid: 281e08d4c49f3cd42b09237ab77df0ab, type: 3}
+  m_ShaderKeywords: _DIRECTION_X
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _ChromaticAberration: 0.1
+    - _Cutoff: 0.01
+    - _Direction: 0
+    - _Height: 1
+    - _Reflaction: 0.15
+    - _Size: 0.5
+    - _Speed: 1
+    - __dirty: 0
+    m_Colors:
+    - _Color_Alpha: {r: 0.4396583, g: 0.9811321, b: 0.9575117, a: 0}
