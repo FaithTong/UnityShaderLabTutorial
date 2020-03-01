@@ -20,13 +20,21 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _ChromaticAberration: 0.1
+    - _ChromaticAberration: 0
     - _Cutoff: 0.01
     - _Direction: 0
     - _Height: 1
-    - _Reflaction: 0.15
-    - _Size: 0.5
-    - _Speed: 1
+    - _LiquidLevel: 1
+    - _Reflaction: 1.07
+    - _RippleDirection: 0
+    - _RippleHeight: 0.05
+    - _RippleSpeed: 4
+    - _Size: 0.1
+    - _Speed: 2
     - __dirty: 0
     m_Colors:
-    - _Color_Alpha: {r: 0.4396583, g: 0.9811321, b: 0.9575117, a: 0}
+    - _Color: {r: 1, g: 0.32549024, b: 0.5850094, a: 1}
+    - _Color_Alpha: {r: 0.73567075, g: 0.36320752, b: 1, a: 0}
+    - _Color_Opacity: {r: 1, g: 0.3160377, b: 0.9942691, a: 0.44705883}
+    - _Specular: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
+    - _Specular_Smoothness: {r: 0.31132078, g: 0.18943575, b: 0.18943575, a: 1}
