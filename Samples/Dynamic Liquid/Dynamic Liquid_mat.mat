@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Dynamic Liquid_mat
   m_Shader: {fileID: 4800000, guid: 281e08d4c49f3cd42b09237ab77df0ab, type: 3}
-  m_ShaderKeywords: _DIRECTION_X
+  m_ShaderKeywords: _DIRECTION_X _RIPPLEDIRECTION_X
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -23,18 +23,19 @@ Material:
     - _ChromaticAberration: 0
     - _Cutoff: 0.01
     - _Direction: 0
+    - _Falloff: 1.09
     - _Height: 1
-    - _LiquidLevel: 1
+    - _LiquidLevel: 0.5
     - _Reflaction: 1.07
     - _RippleDirection: 0
-    - _RippleHeight: 0.05
+    - _RippleHeight: 0.1
     - _RippleSpeed: 4
     - _Size: 0.1
     - _Speed: 2
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 1, g: 0.32549024, b: 0.5850094, a: 1}
+    - _Color: {r: 0.894, g: 0.191316, b: 0.40212134, a: 1}
     - _Color_Alpha: {r: 0.73567075, g: 0.36320752, b: 1, a: 0}
     - _Color_Opacity: {r: 1, g: 0.3160377, b: 0.9942691, a: 0.44705883}
     - _Specular: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
-    - _Specular_Smoothness: {r: 0.31132078, g: 0.18943575, b: 0.18943575, a: 1}
+    - _Specular_Smoothness: {r: 0.24528301, g: 0.18483, b: 0.054378778, a: 1}
