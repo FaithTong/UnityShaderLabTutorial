@@ -50,7 +50,7 @@
             level = step(0, pos.y + ripple.z + _Level * 0.01);
             #endif
 
-            clip(level - 0.01);
+            clip(level - 0.001);
 
             o.Albedo = _Color.rgb;
             o.Specular = _Specular.rgb;
