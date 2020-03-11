@@ -37,20 +37,23 @@
 
         void surf (Input IN, inout SurfaceOutputStandardSpecular o)
         {
-            float3 pivot = mul(unity_ObjectToWorld, float4(0, 0, 0, 1)).xyz;
-            float3 pos = pivot - IN.worldPos;
-            float3 ripple = sin(_Time.y * _Speed) * _Height * pos;
+            // 液面效果
+            float3 pivot = mul(unity_ObjectToWorld, float4(0, 0, 0, 1));
+            float liquid = pivot.y - IN.worldPos.y + _Level * 0.01;
 
-            fixed level;
+            // 波纹效果
+            float3 ripple = sin(_Time.y * _Speed) * _Height * IN.worldPos;
 
             // 根据波纹的不同方向进行判断
             #if _DIRECTION_X
-            level = step(0, pos.y + ripple.x + _Level * 0.01);
+            liquid += ripple.x;
             #else
-            level = step(0, pos.y + ripple.z + _Level * 0.01);
+            liquid += ripple.z;
             #endif
 
-            clip(level - 0.001);
+            // 像素剔除
+            liquid = step(0, liquid);
+            clip(liquid - 0.001);
 
             o.Albedo = _Color.rgb;
             o.Specular = _Specular.rgb;

@@ -21,7 +21,7 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - _ChromaticAberration: 0
-    - _Cutoff: 0.5
+    - _Cutoff: 0.01
     - _Direction: 0
     - _Falloff: 1.09
     - _Height: 0.1
