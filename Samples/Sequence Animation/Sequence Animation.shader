@@ -43,7 +43,7 @@
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
                 // 计算序列帧横向和纵向的索引
-                float time = floor(_Time.y) * _Rate;
+                float time = floor(_Time.y * _Rate);
                 float row = floor(time / _Column) + 1;
                 float column = fmod(time, _Column);
 
