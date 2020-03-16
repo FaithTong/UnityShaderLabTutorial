@@ -10,7 +10,7 @@
     }
     SubShader
     {
-        Tags {"RenderType" = "Transparent" "Queue" = "Transparent"}
+        Tags {"RenderType" = "Transparent" "Queue" = "Transparent" "DisableBatching" = "True"}
         Blend One One
 
         Pass
@@ -18,12 +18,7 @@
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-
-            struct appdata
-            {
-                float2 texcoord : TEXCOORD0;
-                float4 vertex : POSITION;
-            };
+            #include "unityCG.cginc"
 
             struct v2f
             {
@@ -37,10 +32,23 @@
             float _Column;
             float _Rate;
 
-            v2f vert (appdata v)
+            v2f vert (appdata_base v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+
+                float3  viewerLocal = mul(unity_WorldToObject, float4(_WorldSpaceCameraPos, 1));
+                float3  localDir = viewerLocal - float3(0,0,0);
+
+                localDir.y = 0;
+
+                localDir = normalize(localDir);
+                float3  upLocal = abs(localDir.y) > 0.999 ? float3(0, 0, 1) : float3(0, 1, 0);
+                float3  rightLocal = normalize(cross(localDir, upLocal));
+                upLocal = cross(rightLocal, localDir);
+
+                float3  BBLocalPos = rightLocal * v.vertex.x + upLocal * v.vertex.y;
+                o.vertex = UnityObjectToClipPos(float4(BBLocalPos, 1));
+
 
                 // 计算序列帧横向和纵向的索引
                 float time = floor(_Time.y * _Rate);

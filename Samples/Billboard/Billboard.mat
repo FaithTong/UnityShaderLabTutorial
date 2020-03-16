@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sequence Animation
-  m_Shader: {fileID: 4800000, guid: 704f56b68910148459a6e4c2965ba793, type: 3}
-  m_ShaderKeywords: 
+  m_Name: Billboard
+  m_Shader: {fileID: 4800000, guid: 1069f8e4dea3b22438b488405ecdde85, type: 3}
+  m_ShaderKeywords: _TYPE_SPHERICAL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,16 +20,10 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Tex:
-        m_Texture: {fileID: 2800000, guid: 6b2910686f14f5844bf4707db2d5e2ba, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Column: 3
-    - _Keyword0: 0
-    - _Rate: 60
-    - _Row: 3
-    - _color: 0
+    - _Type: 0
     m_Colors:
-    - _Color0: {r: 0, g: 0, b: 0, a: 0}
-    - _Color2: {r: 1, g: 0, b: 0, a: 0}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
