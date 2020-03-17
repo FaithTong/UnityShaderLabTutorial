@@ -8,9 +8,14 @@
     }
     SubShader
     {
-        Tags {"RenderType" = "Transparent" "Queue" = "Transparent"}
+        Tags
+        {
+            "RenderType" = "Transparent"
+            "Queue" = "Transparent"
+            "DisableBatching" = "True"
+        }
 
-        Blend One One
+        Blend OneMinusDstColor One
         ZWrite Off
 
         Pass
