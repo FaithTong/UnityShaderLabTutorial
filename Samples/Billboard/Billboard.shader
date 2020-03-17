@@ -39,7 +39,8 @@
             {
                 v2f o;
 
-                float3 forward = mul(unity_WorldToObject, float4(_WorldSpaceCameraPos, 1)).xyz;
+                float3 forward = mul(unity_WorldToObject,
+                                     float4(_WorldSpaceCameraPos, 1)).xyz;
 
                 // 判断Billboard的类型
                 #if _TYPE_CYLINDRICAL
