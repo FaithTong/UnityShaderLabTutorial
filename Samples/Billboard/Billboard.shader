@@ -63,7 +63,7 @@
                 float3 right = normalize(cross(forward, up));
                 up = normalize(cross(right, forward));
 
-                // 将顶点的坐标沿着方向向量进行偏移
+                // 将顶点在新的坐标系上移动位置
                 float3 vertex = v.vertex.x * right + v.vertex.y * up;
 
                 o.vertex = UnityObjectToClipPos(vertex);
