@@ -23,6 +23,8 @@
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+
+            // 声明枚举的关键词
             #pragma shader_feature _TYPE_SPHERICAL _TYPE_CYLINDRICAL
             
             struct appdata
@@ -44,6 +46,7 @@
             {
                 v2f o;
 
+                // 计算面片朝向摄像机的前方向量
                 float3 forward = mul(unity_WorldToObject,
                                      float4(_WorldSpaceCameraPos, 1)).xyz;
 
@@ -52,9 +55,11 @@
                 forward.y = 0;
                 #endif
 
-                // 计算互相垂直的三个方向向量
                 forward = normalize(forward);
+
+                // 当摄像机完全在面片正上方或者正下方的时候，旋转临时的上方向量
                 float3 up = abs(forward.y) > 0.999 ? float3(0, 0, 1) : float3(0, 1, 0);
+
                 float3 right = normalize(cross(forward, up));
                 up = normalize(cross(right, forward));
 
