@@ -12,6 +12,7 @@
     {
         Tags {"RenderType" = "Transparent" "Queue" = "Transparent" "DisableBatching" = "True"}
         Blend One One
+        ZWrite Off
 
         Pass
         {
