@@ -18,6 +18,7 @@ Shader "Samples/Dynamic Liquid_ASE"
 	{
 		Tags{ "RenderType" = "Transparent"  "Queue" = "Transparent+0" "IgnoreProjector" = "True" }
 		Cull Back
+		ZWrite Off
 		Blend DstColor SrcColor
 		
 		CGPROGRAM
@@ -65,7 +66,7 @@ Shader "Samples/Dynamic Liquid_ASE"
 }
 /*ASEBEGIN
 Version=17700
-0;0;1920;1029;471.751;971.927;1;False;False
+0;12;1920;1017;471.751;962.927;1;True;False
 Node;AmplifyShaderEditor.CommentaryNode;144;-82.87497,-514.8999;Inherit;False;1005.406;350.8276;Ripple;8;140;4;137;6;127;124;1;126;;1,1,1,1;0;0
 Node;AmplifyShaderEditor.RangedFloatNode;1;-32.87492,-326.1965;Float;False;Property;_RippleSpeed;Ripple Speed;4;0;Create;True;0;0;False;0;1;8.46;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.CommentaryNode;143;78.19611,-999.3275;Inherit;False;839.1482;475.7414;Liquid;7;139;9;13;25;8;5;110;;1,1,1,1;0;0
@@ -79,8 +80,8 @@ Node;AmplifyShaderEditor.WorldPosInputsNode;137;382.7997,-464.9;Inherit;False;0;
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;126;422.0445,-302.4203;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;5;357.0632,-850.2813;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleDivideOpNode;110;440.2083,-625.2647;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;100;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleAddOpNode;9;602.344,-729.9517;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;4;586.4959,-391.2411;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;9;602.344,-729.9517;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RegisterLocalVarNode;140;728.6835,-397.0103;Inherit;False;Ripple;-1;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.RegisterLocalVarNode;139;726.33,-734.8212;Inherit;False;Liquid;-1;True;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.GetLocalVarNode;141;155.3393,-103.4838;Inherit;False;139;Liquid;1;0;OBJECT;;False;1;FLOAT;0
@@ -92,7 +93,7 @@ Node;AmplifyShaderEditor.StaticSwitch;105;730.6656,-59.3087;Inherit;False;Proper
 Node;AmplifyShaderEditor.ColorNode;106;941.5203,-375.8823;Inherit;False;Property;_Specular_Smoothness;Specular_Smoothness;1;0;Create;True;0;0;False;0;0,0,0,0;0.245283,0.18483,0.05437878,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ColorNode;76;947.2869,-561.6471;Inherit;False;Property;_Color;Color;0;0;Create;True;0;0;False;0;0.4396583,0.9811321,0.9575117,0;0.894,0.191316,0.4021213,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.StepOpNode;113;961.1319,-78.71803;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.StandardSurfaceOutputNode;98;1219.913,-442.7706;Float;False;True;-1;2;ASEMaterialInspector;0;0;StandardSpecular;Samples/Dynamic Liquid_ASE;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;False;False;False;False;False;False;Back;0;False;-1;0;False;-1;False;0;False;-1;0;False;-1;False;0;Custom;0.01;True;False;0;True;Transparent;;Transparent;ForwardOnly;14;all;True;True;True;True;0;False;-1;False;0;False;-1;255;False;-1;255;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;False;2;15;10;25;False;0.5;False;7;2;False;-1;3;False;-1;0;4;False;-1;1;False;-1;0;False;-1;0;False;-1;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;Absolute;0;;6;-1;-1;-1;0;False;0;0;False;-1;-1;0;False;-1;0;0;0;False;0.04;False;-1;0;False;-1;16;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
+Node;AmplifyShaderEditor.StandardSurfaceOutputNode;98;1219.913,-442.7706;Float;False;True;-1;2;ASEMaterialInspector;0;0;StandardSpecular;Samples/Dynamic Liquid_ASE;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;False;False;False;False;False;False;Back;2;False;-1;0;False;-1;False;0;False;-1;0;False;-1;False;0;Custom;0.01;True;False;0;True;Transparent;;Transparent;ForwardOnly;14;all;True;True;True;True;0;False;-1;False;0;False;-1;255;False;-1;255;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;False;2;15;10;25;False;0.5;False;7;2;False;-1;3;False;-1;0;4;False;-1;1;False;-1;0;False;-1;0;False;-1;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;Absolute;0;;6;-1;-1;-1;0;False;0;0;False;-1;-1;0;False;-1;0;0;0;False;0.04;False;-1;0;False;-1;16;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
 WireConnection;124;0;1;0
 WireConnection;127;0;124;0
 WireConnection;126;0;127;0
@@ -100,10 +101,10 @@ WireConnection;126;1;6;0
 WireConnection;5;0;25;2
 WireConnection;5;1;8;2
 WireConnection;110;0;13;0
-WireConnection;9;0;5;0
-WireConnection;9;1;110;0
 WireConnection;4;0;137;0
 WireConnection;4;1;126;0
+WireConnection;9;0;5;0
+WireConnection;9;1;110;0
 WireConnection;140;0;4;0
 WireConnection;139;0;9;0
 WireConnection;138;0;141;0
@@ -118,4 +119,4 @@ WireConnection;98;3;106;0
 WireConnection;98;4;106;4
 WireConnection;98;10;113;0
 ASEEND*/
-//CHKSM=2496451CC181F25326CDEAF9B5250EF286BF3B7A
+//CHKSM=22E20ED1A0A1CA7BA69897B02C9DCA0BE805076A
