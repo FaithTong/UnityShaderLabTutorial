@@ -16,6 +16,7 @@
     {
         Tags{"RenderType" = "Transparent" "Queue" = "Transparent"}
         Blend DstColor SrcColor
+        ZWrite Off
 
         CGPROGRAM
         #pragma surface surf StandardSpecular noshadow
