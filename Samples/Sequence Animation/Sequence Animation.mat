@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sequence Animation
-  m_Shader: {fileID: 4800000, guid: 55b768e96ceab8841a4e86da01e18ef3, type: 3}
+  m_Shader: {fileID: 4800000, guid: 704f56b68910148459a6e4c2965ba793, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,11 +19,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _SequenceImage:
+        m_Texture: {fileID: 2800000, guid: 7e1c46a1caa9d784ba1840ad2fd9dbc8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Tex:
         m_Texture: {fileID: 2800000, guid: 7e1c46a1caa9d784ba1840ad2fd9dbc8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AnimationRate: 20
     - _Column: 8
     - _Keyword0: 0
     - _Rate: 30
