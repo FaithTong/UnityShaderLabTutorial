@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sequence Animation
-  m_Shader: {fileID: 4800000, guid: 704f56b68910148459a6e4c2965ba793, type: 3}
+  m_Shader: {fileID: 4800000, guid: 55b768e96ceab8841a4e86da01e18ef3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,7 +32,7 @@ Material:
     - _Column: 8
     - _Column1: 2
     - _Keyword0: 0
-    - _Rate: 30
+    - _Rate: 28
     - _Row: 4
     - _ToggleSwitch0: 0
     - _color: 0
