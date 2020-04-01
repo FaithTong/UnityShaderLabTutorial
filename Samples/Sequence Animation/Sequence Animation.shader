@@ -62,14 +62,15 @@
 
                 // ---------- 序列帧 部分 ----------
 
-                // 计算序列帧横向和纵向的索引
+                // 计算序列帧的行索引和列索引
                 float time = floor(_Time.y * _Rate);
-                float row = floor(time / _Column) + 1;
+                float row = floor(time / _Column);
                 float column = fmod(time, _Column);
 
-                // 计算纹理的采样坐标
-                float2 uv = float2(v.texcoord.x / _Column, v.texcoord.y / _Row);
-                o.texcoord = float2(uv.x + column / _Column, uv.y - row / _Row);
+                // 计算序列帧的纹理坐标
+                float texcoordU = (v.texcoord.x + column) / _Column;
+                float texcoordV = (v.texcoord.y - 1 - row) / _Row;
+                o.texcoord = float2(texcoordU, texcoordV);
 
                 return o;
             }
