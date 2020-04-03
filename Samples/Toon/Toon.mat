@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Toon
+  m_Shader: {fileID: 4800000, guid: fd3b813260851b145b25b6f5516d4f46, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseColor:
+        m_Texture: {fileID: 2800000, guid: b20d2974a8b655d43bf94dca50a48814, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseColorRGBOutlineWidthA:
+        m_Texture: {fileID: 2800000, guid: edc203e20331e124b96ab36e62d6dfaf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Diffuse:
+        m_Texture: {fileID: 2800000, guid: edc203e20331e124b96ab36e62d6dfaf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Highlight:
+        m_Texture: {fileID: 2800000, guid: 0441cee90a0dd3a448f59159c773cef8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: b1355a406b9846049adcdd135e0f6ce7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Specular:
+        m_Texture: {fileID: 2800000, guid: d0e02d16b9b1ab349a4dc2481cc01d37, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ToonRamp:
+        m_Texture: {fileID: 2800000, guid: 52e66a9243cdfed44b5e906f5910d35b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ASEOutlineWidth: 0.025
+    - _BaseCellOffset: 0.21
+    - _BaseCellSharpness: 0.38
+    - _BaseCellshadeOffset: 0
+    - _BaseCellshadeSharpness: 0.01
+    - _DiffuseCellshadeOffset: 0
+    - _DiffuseCellshadeSharpness: 0.01
+    - _Float0: 1
+    - _HighlightCellOffset: -0.91
+    - _HighlightCellSharpness: 0.42
+    - _IndirectContribution: 0.762
+    - _IndirectDiffuseContribution: 1
+    - _IndirectSpecularContribution: 1
+    - _Keyword0: 1
+    - _NormalScale: 0
+    - _OutlineWidth: 0.02
+    - _RimOff: 0.6
+    - _RimOffset: 0.61
+    - _RimPower: 0.7
+    - _RimWidth: 0.54
+    - _ShadowContribution: 1
+    - _SpecularOffset: -0.95
+    - _SpecularSharpness: 0.01
+    - _StaticHighLights: 0
+    - _TessMax: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.5
+    - _TessValue: 4
+    - __dirty: 0
+    m_Colors:
+    - _ASEOutlineColor: {r: 0.09195145, g: 0.08410465, b: 0.09433961, a: 0}
+    - _BaseTint: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _HighlightTint: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
+    - _OutlineTint: {r: 1, g: 0.43867922, b: 0.43867922, a: 0}
+    - _RimColor: {r: 0, g: 1.4506292, b: 3.383649, a: 1}
+    - _SpecularTint: {r: 1, g: 1, b: 1, a: 1}
+    - _TintBaseColor: {r: 1, g: 1, b: 1, a: 0}
