@@ -106,12 +106,14 @@
             fixed3 ramp = tex2D(_Ramp, rampTexcoord).rgb;
 
             // 计算漫反射
-            half3 diffuse = albedo * ramp * _LightColor0.rgb * (GIdata.atten + gi.indirect.diffuse);
+            half3 diffuse = albedo * ramp * _LightColor0.rgb *
+                            (GIdata.atten + gi.indirect.diffuse);
 
             // 计算边缘高光
             fixed NdotV = dot(i.worldNormal , i.viewDir);
             fixed rimMask = pow((1.0 - saturate((NdotV + _RimWidth))), _RimFalloff);
-            half3 rim = saturate(rimMask * NdotL) * _RimColor * _LightColor0.rgb * GIdata.atten;
+            half3 rim = saturate(rimMask * NdotL) * _RimColor *
+                        _LightColor0.rgb * GIdata.atten;
 
             // 输出漫反射与边缘高光的和
             return half4(diffuse + rim, 1);
