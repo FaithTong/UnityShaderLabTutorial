@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Toon
-  m_Shader: {fileID: 4800000, guid: fd3b813260851b145b25b6f5516d4f46, type: 3}
+  m_Shader: {fileID: 4800000, guid: 0429a3dd366a4b042bf3b6386dc498ee, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
@@ -19,12 +19,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: edc203e20331e124b96ab36e62d6dfaf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Diffuse:
         m_Texture: {fileID: 2800000, guid: edc203e20331e124b96ab36e62d6dfaf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ramp:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 52e66a9243cdfed44b5e906f5910d35b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSample0:
@@ -46,10 +50,10 @@ Material:
     m_Floats:
     - _ASEOutlineWidth: 0.02
     - _OutlineWidth: 0.02
-    - _RimFalloff: 2
-    - _RimWidth: 0.1
+    - _RimFalloff: 1.16
+    - _RimWidth: 0.543
     - __dirty: 0
     m_Colors:
     - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
-    - _RimColor: {r: 0, g: 2, b: 2, a: 0}
+    - _RimColor: {r: 0, g: 3.8952875, b: 3.9999995, a: 0}

@@ -46,70 +46,77 @@
             ENDCG
         }
 
-        // ---------- 正常部分----------
+        // ---------- Surface 部分----------
         CGPROGRAM
         #pragma surface surf Toon
 
         sampler2D _Albedo;
-        sampler2D _Ramp;
 
         struct Input
         {
             float2 uv_Albedo;
             float3 worldNormal;
-            INTERNAL_DATA
-
-            float3 worldPos;
+            float3 viewDir;
         };
 
+        // 自定义的表面函数输出结构体
         struct SurfaceOutputToon
         {
             half3 Albedo;
             half3 Normal;
             half3 Emission;
             fixed Alpha;
+            
+            // 将Input结构体包含进来
             Input SurfaceInput;
-            UnityGIInput GIData;
+
+            // 内置的全局照明结构体
+            UnityGIInput GIdata;
         };
 
+        void surf (Input i, inout SurfaceOutputToon o)
+        {
+            o.SurfaceInput = i;
+        }
+
+        void LightingToon_GI (inout SurfaceOutputToon s, UnityGIInput GIdata, UnityGI gi)
+        {
+            s.GIdata = GIdata;
+        }
+
+        sampler2D _Ramp;
         half4 _RimColor;
         fixed _RimWidth;
         half _RimFalloff;
 
-        half4 LightingToon ( inout SurfaceOutputToon s, half3 viewDir, UnityGI gi )
+        half4 LightingToon (SurfaceOutputToon s, UnityGI gi)
         {
-            UnityGIInput data = s.GIData;
+            // 重新赋值，方便后续调用结构体内的变量
+            UnityGIInput GIdata = s.GIdata;
             Input i = s.SurfaceInput;
 
-            half4 c = 0;
-            
-            float3 worldlightDir = normalize( UnityWorldSpaceLightDir( i.worldPos ) );
-            float NdotL = dot( i.worldNormal , worldlightDir );
-            float2 rampTexcoord = ((NdotL*0.5 + 0.5)).xx;
-            
-            UnityGI gi11 = gi;
-            gi11 = UnityGI_Base( data, 1, i.worldNormal );
-            float3 indirectDiffuse11 = gi11.indirect.diffuse + i.worldNormal * 0.0001;
-            float3 worldViewDir = normalize( UnityWorldSpaceViewDir( i.worldPos ) );
-            float NdotV = dot( i.worldNormal , worldViewDir );
-            float rimMask = pow((1.0 - saturate( ( NdotV + _RimWidth ))), _RimFalloff );
-            c.rgb = ( ( tex2D( _Albedo, i.uv_Albedo ) * tex2D( _Ramp, rampTexcoord ) * ( _LightColor0 * float4( ( data.atten + indirectDiffuse11 ) , 0.0 ) ) ) + ( _RimColor * saturate( ( NdotL * rimMask ) ) * _LightColor0 * data.atten ) ).rgb;
-            c.a = 1;
-            return c;
-        }
+            fixed3 albedo = tex2D(_Albedo, i.uv_Albedo).rgb;
 
-        void LightingToon_GI (inout SurfaceOutputToon s, UnityGIInput data, inout UnityGI gi)
-        {
-            s.GIData = data;
-        }
+            // 使用内置的UnityGI_Base()函数计算GI
+            gi = UnityGI_Base(GIdata, GIdata.ambient, i.worldNormal);
 
-        void surf (Input IN, inout SurfaceOutputToon o)
-        {
-            o.SurfaceInput = IN;
+            // 将光照转为Ramp
+            fixed NdotL = dot(i.worldNormal, gi.light.dir);
+            fixed2 rampTexcoord = float2(NdotL * 0.5 + 0.5, 0.5);
+            fixed3 ramp = tex2D(_Ramp, rampTexcoord).rgb;
+
+            // 计算漫反射
+            half3 diffuse = albedo * ramp * _LightColor0.rgb * (GIdata.atten + gi.indirect.diffuse);
+
+            // 计算边缘高光
+            fixed NdotV = dot(i.worldNormal , i.viewDir);
+            fixed rimMask = pow((1.0 - saturate((NdotV + _RimWidth))), _RimFalloff);
+            half3 rim = saturate(rimMask * NdotL) * _RimColor * _LightColor0.rgb * GIdata.atten;
+
+            // 输出漫反射与边缘高光的和
+            return half4(diffuse + rim, 1);
         }
         ENDCG
-
-
     }
     FallBack "Diffuse"
 }
