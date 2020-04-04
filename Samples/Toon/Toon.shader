@@ -47,7 +47,8 @@
         }
 
         // ---------- 正常部分----------
-        
+        CGPROGRAM
+        #pragma surface surf Toon
 
         sampler2D _Albedo;
         sampler2D _Ramp;
@@ -56,19 +57,17 @@
         {
             float2 uv_Albedo;
             float3 worldNormal;
+            INTERNAL_DATA
+
             float3 worldPos;
         };
 
         struct SurfaceOutputToon
         {
             half3 Albedo;
-            half3 Albedo;
-			half3 Normal;
-			half3 Emission;
-			half Metallic;
-			half Smoothness;
-			half Occlusion;
-			half Alpha;
+            half3 Normal;
+            half3 Emission;
+            fixed Alpha;
             Input SurfaceInput;
             UnityGIInput GIData;
         };
@@ -77,37 +76,25 @@
         fixed _RimWidth;
         half _RimFalloff;
 
-        float4 LightingToon (inout SurfaceOutputToon s, half3 viewDir, half3 lightDir, UnityGI gi)
+        half4 LightingToon ( inout SurfaceOutputToon s, half3 viewDir, UnityGI gi )
         {
             UnityGIInput data = s.GIData;
             Input i = s.SurfaceInput;
 
-            #ifdef UNITY_PASS_FORWARDBASE
-            float atten = data.atten;
-            if( _LightColor0.a == 0)
-			atten = 0;
-            #endif
-
-            fixed NdotL = dot(s.Normal, lightDir);
-            fixed2 rampTexcoord = (NdotL*0.5+0.5).xx;
+            half4 c = 0;
             
-            fixed ramp = tex2D(_Ramp, rampTexcoord);
+            float3 worldlightDir = normalize( UnityWorldSpaceLightDir( i.worldPos ) );
+            float NdotL = dot( i.worldNormal , worldlightDir );
+            float2 rampTexcoord = ((NdotL*0.5 + 0.5)).xx;
             
-            gi = UnityGI_Base(data, 1, i.worldNormal);
-            float3 indirDiffuse = gi.indirect.diffuse;
-
-			float3 worldViewDir = normalize( UnityWorldSpaceViewDir( i_worldPos ) );
-            fixed NdotV = dot(i.worldNormal, worldViewDir);
-
-            fixed4 diffuse = tex2D(_Albedo, i.uv_Albedo) * ramp * _LightColor0 * (atten + indirDiffuse);
-
-
-            fixed rimMask = power(1 - saturate(NdotV + _RimWidth), _RimFalloff);
-            float4 rim = saturate(NdotL * rimMask) * _RimColor * _LightColor0 * atten;
-
-            float4 c;
-            c.rgb += diffuse.rgb + rim.rgb;
-            c.a = o.Alpha;
+            UnityGI gi11 = gi;
+            gi11 = UnityGI_Base( data, 1, i.worldNormal );
+            float3 indirectDiffuse11 = gi11.indirect.diffuse + i.worldNormal * 0.0001;
+            float3 worldViewDir = normalize( UnityWorldSpaceViewDir( i.worldPos ) );
+            float NdotV = dot( i.worldNormal , worldViewDir );
+            float rimMask = pow((1.0 - saturate( ( NdotV + _RimWidth ))), _RimFalloff );
+            c.rgb = ( ( tex2D( _Albedo, i.uv_Albedo ) * tex2D( _Ramp, rampTexcoord ) * ( _LightColor0 * float4( ( data.atten + indirectDiffuse11 ) , 0.0 ) ) ) + ( _RimColor * saturate( ( NdotL * rimMask ) ) * _LightColor0 * data.atten ) ).rgb;
+            c.a = 1;
             return c;
         }
 
