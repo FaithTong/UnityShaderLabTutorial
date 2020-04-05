@@ -3,7 +3,7 @@ guid: fd3b813260851b145b25b6f5516d4f46
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
-  - _ToonRamp: {fileID: 2800000, guid: 52e66a9243cdfed44b5e906f5910d35b, type: 3}
+  - _ToonRamp: {fileID: 2800000, guid: f07c2c1d04bc8be4585cfb136fed7eb1, type: 3}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 
