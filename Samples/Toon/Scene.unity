@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -150,7 +150,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.2
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -206,13 +206,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588563046}
-  m_LocalRotation: {x: 0.051653735, y: -0.9864291, z: 0.1409395, w: 0.066525675}
+  m_LocalRotation: {x: 0.9815166, y: 0.027829735, z: -0.15274455, w: 0.11189237}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 16.554, y: -173.00801, z: -4.977}
+  m_LocalEulerAnglesHint: {x: 166.812, y: 17.551987, z: -1.2030029}
 --- !u!1 &1932195616
 GameObject:
   m_ObjectHideFlags: 0

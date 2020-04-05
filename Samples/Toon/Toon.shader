@@ -77,6 +77,7 @@
         void surf (Input i, inout SurfaceOutputToon o)
         {
             o.SurfaceInput = i;
+            o.Albedo = tex2D(_Albedo, i.uv_Albedo);
         }
 
         void LightingToon_GI (inout SurfaceOutputToon s, UnityGIInput GIdata, UnityGI gi)
@@ -95,8 +96,6 @@
             UnityGIInput GIdata = s.GIdata;
             Input i = s.SurfaceInput;
 
-            fixed3 albedo = tex2D(_Albedo, i.uv_Albedo).rgb;
-
             // 使用内置的UnityGI_Base()函数计算GI
             gi = UnityGI_Base(GIdata, GIdata.ambient, i.worldNormal);
 
@@ -106,7 +105,7 @@
             fixed3 ramp = tex2D(_Ramp, rampTexcoord).rgb;
 
             // 计算漫反射
-            half3 diffuse = albedo * ramp * _LightColor0.rgb *
+            half3 diffuse = s.Albedo * ramp * _LightColor0.rgb *
                             (GIdata.atten + gi.indirect.diffuse);
 
             // 计算边缘高光
