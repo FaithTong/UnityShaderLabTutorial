@@ -14,7 +14,6 @@
         [Header(Outline)]
         [Space(10)] _OutlineColor ("Outline Color", Color) = (0,0,0,0)
         _OutlineWidth ("Outline, Width", Float) = 0.02
-
     }
     SubShader
     {

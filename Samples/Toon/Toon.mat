@@ -48,13 +48,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ASEOutlineWidth: 0.02
+    - _ASEOutlineWidth: 0.025
     - _Indirect: 0.28
     - _OutlineWidth: 0.025
-    - _RimFalloff: 1.67
-    - _RimWidth: 0.335
+    - _RimFalloff: 1.68
+    - _RimWidth: 0.259
     - __dirty: 0
     m_Colors:
-    - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _ASEOutlineColor: {r: 0.1792453, g: 0.07758006, b: 0.048193306, a: 0}
     - _OutlineColor: {r: 0.2264151, g: 0.020291913, b: 0.05461508, a: 0}
-    - _RimColor: {r: 0, g: 2.745098, b: 2.9960785, a: 0}
+    - _RimColor: {r: 0, g: 1.372549, b: 1.4980392, a: 0}
