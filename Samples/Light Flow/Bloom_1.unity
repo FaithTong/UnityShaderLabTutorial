@@ -306,7 +306,7 @@ PrefabInstance:
     - target: {fileID: 1012492617783261714, guid: fcbb65f68f7b2354690ffed4159fc473,
         type: 3}
       propertyPath: m_Name
-      value: magic_sword
+      value: Sword_Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 4059504076486592513, guid: fcbb65f68f7b2354690ffed4159fc473,
         type: 3}
