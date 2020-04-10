@@ -35,6 +35,8 @@
 			}
 
             sampler2D _MainTex;
+            half _Distortion;
+            half _Intensity;
 
             fixed _Brightness;
             fixed _Saturation;
@@ -45,28 +47,47 @@
             half _VignetteFalloff;
             half _VignetteIntensity;
 
+            sampler2D _Noise;
+            half _NoiseAmount;
+            half _NoiseSpeed;
+            half _RandomValue;
+
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 color = tex2D(_MainTex, i.uv);
+                // 镜头扭曲
+                fixed2 center = i.uv - 0.5;
+                half radius2 = pow(center.x, 2) + pow(center.y, 2);
+                half distortion = 1 + sqrt(radius2) * radius2 * _Distortion;
+
+                half2 uvColor = center * distortion * _Intensity  + 0.5;
+                fixed4 screen = tex2D(_MainTex, uvColor);
 
                 // 亮度、饱和度、对比度
-                color.rgb += _Brightness;
+                screen += _Brightness;
 
-                fixed luminance = Luminance(color.rgb).xxx;
-                color.rgb = lerp(luminance, color.rgb, _Saturation);
+                fixed luminance = Luminance(screen.rgb).xxx;
+                screen = lerp(luminance, screen.rgb, _Saturation);
 
                 fixed3 gray = fixed3(0.5,0.5,0.5);
-                color.rgb = lerp(gray, color.rgb, _Contrast);
+                screen = lerp(gray, screen.rgb, _Contrast);
 
                 // 着色
-                color.rgb *= _Tint.rgb;
+                screen *= _Tint.rgb;
 
                 // 晕影
                 half circle = distance(i.screenPos.xy, fixed2(0.5,0.5));
                 fixed vignette = 1 - saturate(pow(circle, _VignetteFalloff));
-                color.rgb *= pow(vignette, _VignetteIntensity);
+                screen *= pow(vignette, _VignetteIntensity);
 
-                return color;
+                // 噪点颗粒
+                float2 uvNoise = i.uv * _NoiseAmount;
+                uvNoise.x += sin(_RandomValue);
+                uvNoise.y -= sin(_RandomValue + 1);
+
+                fixed noise = tex2D(_Noise, uvNoise).r;
+                screen *= noise;
+
+                return screen;
             }
             ENDCG
         }

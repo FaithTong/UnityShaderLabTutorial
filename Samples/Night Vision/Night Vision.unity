@@ -218,12 +218,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EffectShader: {fileID: 4800000, guid: 8b344ea1891dc7046864beaaf79b9f16, type: 3}
-  Brightness: -0.15
-  Saturation: 0.25
-  Contrasrt: 1.1
-  Tint: {r: 0, g: 1, b: 0.17717361, a: 1}
-  VignetteFalloff: 6.12
-  VignetteIntensity: 42
+  Distortion: 0.78
+  Intensity: 0.8
+  Brightness: 0.02
+  Saturation: 0.3
+  Contrasrt: 1.35
+  Tint: {r: 0, g: 1, b: 0.07337785, a: 1}
+  VignetteFalloff: 6.57
+  VignetteIntensity: 90.6
+  Noise: {fileID: 2800000, guid: 7e31c0e16d8763d478cc2b2a6b0aedd9, type: 3}
+  NoiseAmount: 3
+  NoiseSpeed: 1.64
 --- !u!1 &1314406291
 GameObject:
   m_ObjectHideFlags: 0
