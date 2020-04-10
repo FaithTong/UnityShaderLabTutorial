@@ -36,7 +36,7 @@
 
             sampler2D _MainTex;
             half _Distortion;
-            half _Intensity;
+            half _Scale;
 
             fixed _Brightness;
             fixed _Saturation;
@@ -49,7 +49,6 @@
 
             sampler2D _Noise;
             half _NoiseAmount;
-            half _NoiseSpeed;
             half _RandomValue;
 
             fixed4 frag (v2f i) : SV_Target
@@ -59,20 +58,20 @@
                 half radius2 = pow(center.x, 2) + pow(center.y, 2);
                 half distortion = 1 + sqrt(radius2) * radius2 * _Distortion;
 
-                half2 uvColor = center * distortion * _Intensity  + 0.5;
+                half2 uvColor = center * distortion * _Scale  + 0.5;
                 fixed4 screen = tex2D(_MainTex, uvColor);
 
                 // 亮度、饱和度、对比度
                 screen += _Brightness;
 
-                fixed luminance = Luminance(screen.rgb).xxx;
-                screen = lerp(luminance, screen.rgb, _Saturation);
+                fixed4 luminance = Luminance(screen.rgb).xxxx;
+                screen = lerp(luminance, screen, _Saturation);
 
-                fixed3 gray = fixed3(0.5,0.5,0.5);
-                screen = lerp(gray, screen.rgb, _Contrast);
+                fixed4 gray = fixed4(0.5,0.5,0.5,1);
+                screen = lerp(gray, screen, _Contrast);
 
                 // 着色
-                screen *= _Tint.rgb;
+                screen *= _Tint;
 
                 // 晕影
                 half circle = distance(i.screenPos.xy, fixed2(0.5,0.5));

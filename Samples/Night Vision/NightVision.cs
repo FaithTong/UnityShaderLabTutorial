@@ -9,8 +9,8 @@ public class NightVision : MonoBehaviour
     public Shader EffectShader;
 
     [Header("Basic Properties")]
-    public float Distortion = 1;
-    public float Intensity = 1;
+    [Range(-10, 10)] public float Distortion = 0.5f;
+    [Range(0.01f, 1)] public float Scale = 0.5f;
     [Range(-1, 1)] public float Brightness = 0;
     [Range(0, 2)] public float Saturation = 1;
     [Range(0, 2)] public float Contrasrt = 1;
@@ -22,10 +22,9 @@ public class NightVision : MonoBehaviour
     [Range(0, 100)] public float VignetteIntensity = 1;
 
     public Texture2D Noise;
-    public float NoiseAmount = 1;
-    public float NoiseSpeed = 1;
-    private float RandomValue;
+    [Range(0, 10)] public float NoiseAmount = 1;
 
+    private float RandomValue;
     private Material currentMaterial;
 
     Material EffectMaterial
@@ -48,8 +47,7 @@ public class NightVision : MonoBehaviour
         if (EffectMaterial != null)
         {
             EffectMaterial.SetFloat("_Distortion", Distortion);
-            EffectMaterial.SetFloat("_Intensity", Intensity);
-
+            EffectMaterial.SetFloat("_Scale", Scale);
 
             EffectMaterial.SetFloat("_Brightness", Brightness);
             EffectMaterial.SetFloat("_Saturation", Saturation);
@@ -64,7 +62,6 @@ public class NightVision : MonoBehaviour
             {
                 EffectMaterial.SetTexture("_Noise", Noise);
                 EffectMaterial.SetFloat("_NoiseAmount", NoiseAmount);
-                EffectMaterial.SetFloat("_NoiseSpeed", NoiseSpeed);
                 EffectMaterial.SetFloat("_RandomValue", RandomValue);
             }
 
