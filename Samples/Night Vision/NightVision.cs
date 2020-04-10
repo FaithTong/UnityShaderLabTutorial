@@ -9,7 +9,7 @@ public class NightVision : MonoBehaviour
     public Shader EffectShader;
 
     [Header("Basic Properties")]
-    [Range(-10, 10)] public float Distortion = 0.5f;
+    [Range(-2, 2)] public float Distortion = 0.5f;
     [Range(0.01f, 1)] public float Scale = 0.5f;
     [Range(-1, 1)] public float Brightness = 0;
     [Range(0, 2)] public float Saturation = 1;
