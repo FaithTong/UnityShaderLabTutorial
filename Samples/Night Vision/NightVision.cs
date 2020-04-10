@@ -23,8 +23,8 @@ public class NightVision : MonoBehaviour
 
     public Texture2D Noise;
     [Range(0, 10)] public float NoiseAmount = 1;
-
     private float RandomValue;
+
     private Material currentMaterial;
 
     Material EffectMaterial
@@ -58,7 +58,7 @@ public class NightVision : MonoBehaviour
             EffectMaterial.SetFloat("_VignetteFalloff", VignetteFalloff);
             EffectMaterial.SetFloat("_VignetteIntensity", VignetteIntensity);
 
-            if (Noise)
+            if (Noise != null)
             {
                 EffectMaterial.SetTexture("_Noise", Noise);
                 EffectMaterial.SetFloat("_NoiseAmount", NoiseAmount);
@@ -72,6 +72,7 @@ public class NightVision : MonoBehaviour
 
     private void Update()
     {
+        //随机生成范围中的数值
         RandomValue = Random.Range(-3.14f, 3.14f);
     }
 }

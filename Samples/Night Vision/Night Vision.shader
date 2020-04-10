@@ -3,7 +3,7 @@
     Properties
     {
         _MainTex ("MainTex", 2D) = "white" {}
-	}
+    }
     SubShader
     {
         Cull Off ZWrite Off ZTest Always
@@ -21,7 +21,7 @@
                 float4 vertex : SV_POSITION;
                 half2 uv : TEXCOORD0;
                 half4 screenPos : TEXCOORD1;
-			};
+            };
 
             v2f vert (appdata_img v)
             {
@@ -29,10 +29,12 @@
 
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.texcoord;
+
+                // 通过裁切空间坐标得到屏幕空间坐标
                 o.screenPos = ComputeScreenPos(o.vertex);
 
                 return o;
-			}
+            }
 
             sampler2D _MainTex;
             half _Distortion;
@@ -44,9 +46,11 @@
 
             fixed4 _Tint;
 
+            // 晕影属性
             half _VignetteFalloff;
             half _VignetteIntensity;
 
+            // 噪点属性
             sampler2D _Noise;
             half _NoiseAmount;
             half _RandomValue;
