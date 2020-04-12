@@ -46,7 +46,7 @@
 
             fixed4 _Tint;
 
-            // 晕影属性
+            // 暗角属性
             half _VignetteFalloff;
             half _VignetteIntensity;
 
@@ -62,8 +62,8 @@
                 half radius2 = pow(center.x, 2) + pow(center.y, 2);
                 half distortion = 1 + sqrt(radius2) * radius2 * _Distortion;
 
-                half2 uvColor = center * distortion * _Scale  + 0.5;
-                fixed4 screen = tex2D(_MainTex, uvColor);
+                half2 uvScreen = center * distortion * _Scale  + 0.5;
+                fixed4 screen = tex2D(_MainTex, uvScreen);
 
                 // 亮度、饱和度、对比度
                 screen += _Brightness;
@@ -77,7 +77,7 @@
                 // 着色
                 screen *= _Tint;
 
-                // 晕影
+                // 暗角
                 half circle = distance(i.screenPos.xy, fixed2(0.5,0.5));
                 fixed vignette = 1 - saturate(pow(circle, _VignetteFalloff));
                 screen *= pow(vignette, _VignetteIntensity);
