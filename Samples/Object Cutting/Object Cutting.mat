@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Object Cutting
-  m_Shader: {fileID: 4800000, guid: b2eba339ad161cb4b8e4b93ec45892af, type: 3}
+  m_Shader: {fileID: 4800000, guid: b37b0f7d79615714a93c03a63b9ace89, type: 3}
   m_ShaderKeywords: _CUTTINGDIRECTION_X _DIRECTION_X
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
