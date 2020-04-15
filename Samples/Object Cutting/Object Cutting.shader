@@ -43,11 +43,11 @@
 
             // 判断切割方向
             #if _DIRECTION_X
-                col.a = step(0, i.worldPos.x - _Position.x);
+                col.a = step(_Position.x, i.worldPos.x);
             #elif _DIRECTION_Y
-                col.a = step(0, i.worldPos.y - _Position.y);
+                col.a = step(_Position.y, i.worldPos.y);
             #else 
-            col.a = step(0, i.worldPos.z - _Position.z);
+            col.a = step(_Position.z, i.worldPos.z);
             #endif
 
             // 将切割方向反转
