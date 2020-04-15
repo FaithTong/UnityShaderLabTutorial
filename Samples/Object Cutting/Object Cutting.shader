@@ -19,6 +19,7 @@
 
         CGPROGRAM
         #pragma surface surf StandardSpecular addshadow fullforwardshadows
+        #pragma target 3.0
 
         #pragma shader_feature _DIRECTION_X _DIRECTION_Y _DIRECTION_Z
         #pragma shader_feature _INVERT_ON
@@ -34,12 +35,13 @@
         {
             float2 uv_Albedo;
             float3 worldPos;
+            fixed face : VFACE;
         };
 
         void surf (Input i, inout SurfaceOutputStandardSpecular o)
         {
             fixed4 col = tex2D(_Albedo, i.uv_Albedo);
-            o.Albedo =  col.rgb;
+            o.Albedo =  i.face > 0 ? col.rgb : fixed3(0,0,0);
 
             // 判断切割方向
             #if _DIRECTION_X
@@ -58,8 +60,8 @@
             clip(col.a - 0.001);
             
             fixed4 reflection = tex2D(_Reflection, i.uv_Albedo);
-            o.Specular = reflection.rgb;
-            o.Smoothness = reflection.a;
+            o.Specular = i.face > 0 ? reflection.rgb : fixed3(0,0,0);
+            o.Smoothness = i.face > 0 ? reflection.a : 0;
 
             o.Normal = UnpackNormal(tex2D(_Normal, i.uv_Albedo));
 
