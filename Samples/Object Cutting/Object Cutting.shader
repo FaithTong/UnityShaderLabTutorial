@@ -21,8 +21,7 @@
         #pragma surface surf StandardSpecular addshadow fullforwardshadows
         #pragma target 3.0
 
-        #pragma shader_feature _DIRECTION_X _DIRECTION_Y _DIRECTION_Z
-        #pragma shader_feature _INVERT_ON
+        #pragma multi_compile _DIRECTION_X _DIRECTION_Y _DIRECTION_Z
         
         sampler2D _Albedo;
         sampler2D _Reflection;
@@ -30,6 +29,7 @@
         sampler2D _Occlusion;
 
         float3 _Position;
+        fixed _Invert;
 
         struct Input
         {
@@ -52,10 +52,8 @@
             col.a = step(_Position.z, i.worldPos.z);
             #endif
 
-            // 将切割方向反转
-            #if _INVERT_ON
-            col.a = 1 - col.a;
-            #endif
+            // 判断是否反转切割方向
+            col.a = _Invert? 1 - col.a : col.a;
 
             clip(col.a - 0.001);
             
