@@ -1,10 +1,10 @@
 # Unity ShaderLab Tutorial
 
-**WHAT IS THIS?**
+**这是什么**
 
-This repository contains all shader files and textures that mentioned in my book.
+为了方便读者朋友们编写测试，本书中涉及到的所有Shader文件以及项目资源都已经提交到GitHub，有兴趣的读者朋友可以直接下载使用。
 
-**HOW TO USE?**
+**如何使用**
 
-If you are interested in it, just download this repository to your Unity Project.
-The path is `ProjectName/Assets`
+为了使低版本的Unity用户也能正常进入项目，本人并没有直接将完整的Unity工程上传，而是将所有资源整理在里一个名称为“Unity ShaderLab Tutorial”文件夹中进行上传。
+读者朋友们下载了文件之后，将其放在`ProjectName/Assets`路径下即可正常使用。
