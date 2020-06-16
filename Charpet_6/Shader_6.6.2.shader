@@ -1,4 +1,4 @@
-﻿Shader "Custom/per-pixel Phong"
+﻿Shader "Custom/Blinn-Phong"
 {
     Properties
     {
@@ -19,8 +19,7 @@
             struct v2f
             {
                 float4 pos : SV_POSITION;
-                float3 normal : TEXCOORD0;
-                float4 vertex : TEXCOORD1;
+                fixed4 color : COLOR0;
             };
 
             fixed4 _MainColor;
@@ -31,33 +30,31 @@
             {
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
-                o.normal = v.normal;
-                o.vertex = v.vertex;
 
-                return o;
-            }
-
-            fixed4 frag (v2f i) : SV_Target
-            {
                 // 计算公式中的所有变量
-                float3 n = UnityObjectToWorldNormal(i.normal);
-                n = normalize(n);
+                fixed3 n = normalize(v.normal);
                 fixed3 l = normalize(_WorldSpaceLightPos0.xyz);
-                fixed3 view = normalize(WorldSpaceViewDir(i.vertex));
+                fixed3 view = normalize(WorldSpaceViewDir(v.vertex));
+                fixed3 h = normalize(view + l);
 
                 // 漫反射部分
                 fixed ndotl = saturate(dot(n, l));
                 fixed4 dif = _LightColor0 * _MainColor * ndotl;
 
                 // 镜面反射部分
-                float3 ref = reflect(-l, n);
-                ref = normalize(ref);
-                fixed rdotv = saturate(dot(ref, view));
+                fixed ndoth = saturate(dot(n, l));
                 fixed4 spec = _LightColor0 * _SpecularColor
-                        * pow(rdotv, _Shininess);
+                                * pow(ndoth, _Shininess);
 
                 // 环境光+漫反射+镜面反射
-                return unity_AmbientSky + dif + spec;
+                o.color = unity_AmbientSky + dif + spec;
+
+                return o;
+            }
+
+            fixed4 frag (v2f i) : SV_Target
+            {
+                return i.color;
             }
             ENDCG
         }
