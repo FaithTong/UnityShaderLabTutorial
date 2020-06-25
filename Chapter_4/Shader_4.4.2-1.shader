@@ -1,4 +1,4 @@
-﻿Shader "Custom/Simplest Shader"
+﻿Shader "Custom/Simplest  Shader"
 {
     SubShader
     {

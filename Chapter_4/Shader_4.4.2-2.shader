@@ -1,4 +1,4 @@
-﻿Shader "Custom/Simplest Shader"
+﻿Shader "Custom/return value"
 {
     SubShader
     {
@@ -14,7 +14,7 @@
                 return UnityObjectToClipPos(vertex);
             }
 
-            float4 frag (in float4 vertex : SV_POSITION) : SV_TARGET
+            fixed4 frag (in float4 vertex : SV_POSITION) : SV_TARGET
             {
                 // 返回颜色值
                 return fixed4(1, 0, 0, 1);
