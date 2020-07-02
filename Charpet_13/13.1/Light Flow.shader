@@ -54,9 +54,11 @@
                 
                 // 判断流动方向
                 #if _DIRECTION_X
-                texcoord = float2(i.texcoord.x + _Time.x * _Speed, i.texcoord.y);
+                texcoord = float2(i.texcoord.x + _Time.x * _Speed,
+                                i.texcoord.y);
                 #elif _DIRECTION_Y
-                texcoord = float2(i.texcoord.x, i.texcoord.y + _Time.x * _Speed);
+                texcoord = float2(i.texcoord.x,
+                                i.texcoord.y + _Time.x * _Speed);
                 #endif
 
                 return tex2D(_Tex, texcoord) * _Color;
