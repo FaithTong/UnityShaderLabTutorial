@@ -42,9 +42,8 @@
                 fixed4 dif = _LightColor0 * _MainColor * ndotl;
 
                 // 镜面反射部分
-                fixed ndoth = saturate(dot(n, l));
-                fixed4 spec = _LightColor0 * _SpecularColor
-                                * pow(ndoth, _Shininess);
+                fixed ndoth = saturate(dot(n, h));
+                fixed4 spec = _LightColor0 * _SpecularColor * pow(ndoth, _Shininess);
 
                 // 环境光+漫反射+镜面反射
                 o.color = unity_AmbientSky + dif + spec;
