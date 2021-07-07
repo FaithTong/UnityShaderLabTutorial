@@ -12,6 +12,6 @@
 
 **注意事项**
 
-1. 建议Unity为**2020.1.0f1c1**及以上版本；
-2. 如果资源导入项目之后出现报错提醒，说明当前项目缺少**Post Processing**包，在Unity的**Package Manager**中安装之后即可解决；
-3. 建议安装**2.1.7**及以上版本的Post Processing包。
+1. 建议Unity为**2020.1.0f1c1**及以上版本，[下载链接](https://unity.cn/releases/full/2020)；
+2. 如果资源导入项目之后出现报错提醒，说明当前项目缺少`Post Processing`包，在Unity的Package Manager中安装之后即可解决；
+3. 建议安装`2.1.7`及以上版本的Post Processing包。
